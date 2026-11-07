@@ -1,0 +1,25 @@
+# JunLin｜AI
+
+> 賴俊燐（JunLin）的個人網站。分享 AI 應用，協助個人與企業善用科技提升效率、打造品牌，推動數位轉型。
+
+## 頁面
+- [關於我](https://1123junlin.com/about/)
+- [服務](https://1123junlin.com/services/)
+- [作品](https://1123junlin.com/portfolio/)
+- [活動足跡](https://1123junlin.com/activities/)
+- [訪談](https://1123junlin.com/interview/)
+- [常見問題](https://1123junlin.com/faq/)
+
+## 文章
+- [白袍人生學院 10 月品牌月講座心得：個人品牌要專注「留量」，品牌才能走得比創辦人更遠](https://1123junlin.com/2026/10/29/brand-beyond-founder-dr-hao-october-2026/)：參加白袍人生學院 10 月品牌月線上講座「品牌如何走得比創辦人更遠？」的心得：個人品牌要專注在留量，並記錄謝玠揚博士的品牌觀點，以及沈瑞斌醫師推廣美顏針的啟發。
+- [2026 台灣醫用雷射光電學會秋季年會心得：非醫師視角，帶回眼周整合治療與數位護城河兩大收穫](https://1123junlin.com/2026/10/21/taiwan-medical-laser-photonics-society-2026/)：非醫師的我參加 2026 年 10 月 18 日台灣醫用雷射光電學會秋季年會，記錄陳建名醫師眼周整合治療講題的啟發，以及張益豪醫師「AI 時代的數位護城河」的聽講心得。
+- [短影音操盤課心得：流量之後，更要問「然後呢？」](https://1123junlin.com/2026/10/15/short-video-ip-strategy-course-notes/)：參加老獅說自媒體學院「精銳IP 短影音操盤策略班」後的心得：有流量、有轉化之後，真正要回答的是商業模式怎麼變現。
+- [TEDxRenaiRoad 2026 志工心得｜What Makes Us Human？在舞台背後重新看見「人」的價值](https://1123junlin.com/2026/09/12/tedx-renairoad-2026-volunteer-reflection/)：擔任第三屆 TEDxRenaiRoad 志工是什麼體驗？從魏海敏、許秉權、李讓與吳力勻的分享，重新思考 AI 時代中真正讓我們成為人的力量。
+- [從白袍人生學院篝火計畫 09 聚到「來日方腸」：從線上到線下的跨界學習](https://1123junlin.com/2026/09/06/campfire-09-colorectal-health-2026/)：白袍人生學院「篝火計畫09聚」邀請陳致一醫師分享，促成我參與2026「來日方腸」醫學研討會，從醫療溝通、病患體驗、診所經營與醫療法律，看見跨界學習的價值。
+- [從科技業看 Dyson CameraJet：當 AI 從提醒走向執行，智慧牙刷正在改變什麼？](https://1123junlin.com/2026/09/02/dyson-camerajet-ai-toothbrush/)：先說結論：Dyson CameraJet 最值得科技業關注的，不是「牙刷裝了一顆相機」，而是 AI 開始從提供資訊，走向控制硬體並協助執行動作。
+- [AI 時代的數位護城河 小班制全天課程](https://1123junlin.com/2026/08/30/ai-digital-moat-workshop/)：這場「AI 時代的數位護城河 小班制全天課程」由陳昱傑醫師主講，核心結論是：真正難以被取代的數位護城河，不是仰賴單一工具或短期流量。
+- [醫美小白初體驗-賦真妍皮膚專科診所](https://1123junlin.com/2026/08/05/first-aesthetic-clinic-experience/)：第一次到賦真妍皮膚專科診所體驗醫美，最深的體會是：好的醫美診所，靠的不是制式化流程，而是願意依照每個人的狀況去溝通、調整施作方式的專業態度。
+- [參加白袍人生學院線上課程「Google我的商家」課後心得](https://1123junlin.com/2026/07/25/google-business-profile-course-review/)：今晚參加白袍人生學院的線上課程《Google 我的商家》，最大的收穫是：Google 我的商家不只是曝光工具，更是診所24小時不打烊的信任窗口。
+- [專訪李富城主播：真正的氣象專業，不只是看數據，更是數十年的判讀經驗](https://1123junlin.com/2026/07/16/allplayer-studio-saleswhat/)：專訪 AllPlayer Studio 李富城主播後最深的體會是：真正的氣象專業，不是誰說得準，而是所有判斷都必須建立在科學依據與資料分析之上。
+- [2026 5525+2 五月天演唱會：從熱血到陪伴，我們一起長大了](https://1123junlin.com/2026/07/13/mayday-5525-concert-2026/)：這場因颱風延期而誕生的第五場演唱會，意外成為2026五月天5525+2巡迴演唱會的最後一場。
+- [白袍人生學院 2026高峰年會](https://1123junlin.com/2026/06/27/dr-hao-summit-2026/)：加入白袍人生學院快3個月，參加這次2026高峰年會最深的體會是：真正珍貴的不是任何單一技術，而是一群人願意分享經驗、共學共好的文化。
