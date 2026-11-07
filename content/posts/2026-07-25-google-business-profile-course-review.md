@@ -2,6 +2,7 @@
 title: 參加白袍人生學院線上課程「Google我的商家」課後心得
 slug: google-business-profile-course-review
 date: 2026-07-25T22:16:01+08:00
+updated: 2026-11-07
 category: 活動記錄
 url: https://1123junlin.com/2026/07/25/google-business-profile-course-review/
 featured_image: /images/2026/07/ENT33-0725-LN-rotated.jpeg
@@ -78,6 +79,20 @@ description: 今晚參加白袍人生學院的線上課程《Google 我的商家
 也謝謝[貝爾診所](https://www.clinics.com.tw/hospital/3501154519)的熊大醫師吳院長，陪我拍了小短片😂（我好尷……)
 
 [YouTube 影片](https://www.youtube.com/watch?v=kg-HtJxiqLE)
+
+## 常見問題
+
+### Google 我的商家對診所有什麼用？
+
+它不只是讓病患搜尋得到診所的曝光工具，更像診所的「數位門面」。病患通常會先看評論、照片、看診項目與營業資訊，再決定要不要預約。
+
+### 收到負面評論該怎麼處理？
+
+不急著反駁，以專業態度回應、釐清問題並提出處理方式。其他潛在病患在意的，往往是診所怎麼面對負評。
+
+### 哪些經營 Google 商家的做法可能有風險？
+
+例如用不自然的方式增加評論、在商家資訊中塞入大量關鍵字、建立重複商家或修改商家名稱來增加曝光。這些做法短期看似有效，長期可能影響商家權重，甚至增加被限制的風險。
 
 ## 延伸閱讀
 

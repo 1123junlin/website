@@ -239,3 +239,49 @@ a:hover{color:var(--sora)}
 .svc-mark .ico svg{width:44px;height:44px}
 .sec.tint .ico{background:var(--surface)}
 @media (max-width:600px){.svc-mark .ico{width:64px;height:64px;margin:0}.svc-mark .ico svg{width:34px;height:34px}}
+/* 文章開頭：重點摘要＋目錄 */
+.post-top{max-width:var(--read);display:grid;gap:16px;margin:8px 0 36px}
+.tldr{background:var(--mist);border-left:3px solid var(--sora);border-radius:0 12px 12px 0;padding:18px 22px}
+.tldr-h{font-size:13px;color:var(--sora-deep);margin:0 0 6px;letter-spacing:.08em;font-weight:500}
+.tldr p{margin:0;font-size:16px;line-height:1.8}
+.toc details{border:1px solid var(--line);border-radius:12px;padding:14px 22px;background:var(--surface)}
+.toc summary{cursor:pointer;font-size:15px;font-weight:500;color:var(--ink)}
+.toc ol{margin:10px 0 2px;padding-left:1.4em;font-size:15px;line-height:1.9}
+.toc a{color:var(--sub);text-decoration:none}
+.toc a:hover{color:var(--sora)}
+.prose h2,.prose h3{scroll-margin-top:84px}
+.meta .upd{margin-left:12px}
+.meta a{color:var(--sub)}
+/* 作品頁 */
+.works{padding-bottom:96px}
+.work{display:grid;grid-template-columns:260px 1fr;gap:48px;padding:52px 0;border-top:1px solid var(--ink)}
+.work-head{position:sticky;top:96px;align-self:start}
+.work-head h2{font-family:var(--serif);font-size:clamp(24px,2.6vw,30px);line-height:1.4;margin:0 0 12px;letter-spacing:.06em}
+.work-head p{margin:0;color:var(--sub);font-size:15px;line-height:1.85}
+.work-link{display:inline-block;margin-top:16px;font-size:15px;padding:8px 18px;border:1px solid var(--sora);border-radius:999px;text-decoration:none;color:var(--sora-deep)}
+.work-link:hover{background:var(--mist)}
+.work-body{min-width:0}
+.rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rail.one{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rail figure,.shot{margin:0}
+.poster a{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.poster img{width:100%;aspect-ratio:1054/1492;object-fit:cover;transition:transform .4s}
+.poster a:hover img{transform:scale(1.02)}
+.rail figcaption{margin-top:10px;font-size:15px;line-height:1.5}
+.rail figcaption strong{display:block;font-weight:500}
+.rail figcaption span{color:var(--sub);font-size:13px}
+.clip .video{max-width:none;border-radius:12px}
+.shot img{width:100%;max-width:720px;border-radius:12px;border:1px solid var(--line)}
+@media (max-width:860px){
+  .work{grid-template-columns:1fr;gap:20px;padding:40px 0}
+  .work-head{position:static}
+}
+@media (max-width:600px){
+  .rail,.rail.one{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0;padding:0 0 8px;scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .rail figure{flex:0 0 72%;scroll-snap-align:start}
+  .rail.one figure{flex-basis:72%}
+}
+/* 防止任何內容撐寬手機畫面 */
+.prose img,.prose iframe{max-width:100%}
+.wide .prose>p>a>img,.wide .prose>p>img{max-width:min(640px,100%)}

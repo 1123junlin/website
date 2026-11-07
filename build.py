@@ -7,6 +7,7 @@
 import html, json, os, re, shutil, urllib.parse
 from pathlib import Path
 import markdown
+from markdown.extensions.toc import TocExtension, slugify_unicode
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "content"
@@ -89,7 +90,7 @@ def yt_grid(m):
     return f'<div class="video-grid">{"".join(items)}</div>'
 
 def md(text):
-    h = markdown.markdown(text, extensions=["tables", "sane_lists"])
+    h = markdown.markdown(text, extensions=["tables", "sane_lists", TocExtension(slugify=slugify_unicode, toc_depth="2-3")])
     h = re.sub(r'<!--.*?-->', '', h, flags=re.S)
     def fix(m):
         href = m.group(1)
@@ -405,15 +406,88 @@ def page(stem):
         desc = "分享、建構、優化、轉型：AI 應用講座、客製化 AI 與自動化流程、網站 SEO／AIEO 優化、企業 AI 導入。"
     write(m["path"], layout(m["title"], desc, body, m["path"], ld))
 
+
+# ---------- 作品頁 ----------
+def yt(vid, title, short=True):
+    cls = "video short" if short else "video"
+    return (f'<div class="{cls}"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{esc(title)}" loading="lazy" '
+            f'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>')
+
+def work_section(title, desc, inner, link=None):
+    more = f'<a class="work-link" href="{link[1]}" target="_blank" rel="noopener">{link[0]}</a>' if link else ""
+    return f"""<section class="work">
+  <header class="work-head"><h2>{title}</h2><p>{desc}</p>{more}</header>
+  <div class="work-body">{inner}</div>
+</section>"""
+
+def portfolio_page():
+    I = "/images/2026/"
+    posters = [(I + "07/GZ0720-v6.png", "兒童禮儀班", "招生海報"),
+               (I + "07/yang_dm-3.png", "自信攻略：認識自己 × 找到力量", "課程 DM"),
+               (I + "07/yang_dm_v0622.png", "大學新鮮人領航營", "活動 DM")]
+    poster_html = '<div class="rail">' + "".join(
+        f'<figure class="poster"><a href="{s}" target="_blank" rel="noopener"><img src="{s}" alt="{esc(n)}{k}（AI 作圖）"></a>'
+        f'<figcaption><strong>{esc(n)}</strong><span>{k}</span></figcaption></figure>' for s, n, k in posters) + '</div>'
+    shorts = [("Df6vnXx-F50", "台灣醫用雷射光電學會", "張益豪醫師演講花絮"),
+              ("yQOzXy5v3zw", "第四屆企業內部講師孵化器（ITI）", "開業式紀錄"),
+              ("sNkUncoSV1w", "2026 直擊張益豪醫師診間", "診間紀錄")]
+    shorts_html = '<div class="rail">' + "".join(
+        f'<figure class="clip">{yt(v, a)}<figcaption><strong>{esc(a)}</strong><span>{esc(b)}</span></figcaption></figure>' for v, a, b in shorts) + '</div>'
+    auto_html = ('<div class="rail one"><figure class="clip">' + yt("JT_kyjvCtNA", "1031 ITI4 第一次上課") +
+                 '<figcaption><strong>ITI4 第一次上課</strong><span>AI 自動剪輯</span></figcaption></figure></div>')
+    shot = lambda src, alt, href=None: (f'<figure class="shot">' + (f'<a href="{href}" target="_blank" rel="noopener">' if href else "") +
+                                         f'<img src="{src}" alt="{esc(alt)}">' + ("</a>" if href else "") + "</figure>")
+    sections = [
+        work_section("好用工具", "短影音人設測驗：從身分、內容到拍攝資源回答問題，得到你的人設類型、選題方向與執行建議。",
+                     shot(I + "10/%E6%88%AA%E5%9C%96-2026-10-19-%E4%B8%8B%E5%8D%882.32.09.png", "短影音人設測驗工具畫面", "https://claude.ai/artifact/3MZqQkkTNkF2ENNWR4sDgs"),
+                     ("開始測驗", "https://claude.ai/artifact/3MZqQkkTNkF2ENNWR4sDgs")),
+        work_section("AI 作圖", "用 AI 生成的課程招生海報與活動 DM。點圖片可看大圖。", poster_html),
+        work_section("短影音剪輯", "活動、課程與診間的直式短影音。", shorts_html),
+        work_section("AI 自動影音剪輯", "用 AI 自動完成剪輯的課程紀錄。", auto_html),
+        work_section("網站建置", "企業內部講師孵化器 ITI4 的課程網站。",
+                     shot(I + "10/image-3.png", "ITI4 網站首頁畫面", "https://iti4.1123junlin.com"),
+                     ("前往網站", "https://iti4.1123junlin.com")),
+        work_section("Claude 串 GitHub 投票系統", "用 Claude 串接 GitHub 製作的線上投票系統。",
+                     shot(I + "11/%E6%88%AA%E5%9C%96-2026-11-05-%E4%B8%8A%E5%8D%8810.57.35.png", "Claude 串 GitHub 投票系統畫面")),
+    ]
+    body = f"""<div class="wrap">
+<header class="page-head"><h1>作品</h1><p class="page-lead">AI 工具、AI 作圖、影音剪輯與網站建置，都是實際做出來、正在使用的作品。</p></header>
+<div class="works">{"".join(sections)}</div></div>"""
+    write("/portfolio/", layout("作品", "賴俊燐（JunLin）的作品：AI 工具、AI 作圖海報、短影音剪輯、AI 自動影音剪輯、ITI4 網站建置與 Claude 串 GitHub 投票系統。", body, "/portfolio/"))
+
 # ---------- 文章 ----------
+def faq_pairs(text):
+    """從文章的「常見問題」段落取出問答，給 FAQPage 結構化資料用。"""
+    m = re.search(r'^## [^\n]*常見問題[^\n]*\n(.*?)(?=^## |\Z)', text, flags=re.S | re.M)
+    if not m:
+        return []
+    pairs = []
+    for q, a in re.findall(r'^### (.+?)\n+(.+?)(?=^### |\Z)', m.group(1), flags=re.S | re.M):
+        a = re.sub(r'\*[^*\n]*\*\s*$', '', a.strip()).strip()
+        a = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', a)
+        a = re.sub(r'[*_`>]', '', a).strip()
+        if a:
+            pairs.append((q.strip(), re.sub(r'\s*\n\s*', ' ', a)))
+    return pairs
+
+SKIP_TOC = ("延伸閱讀", "參考來源", "參考與延伸閱讀")
+
 def post(p):
     feat = p.get("featured_image", "").replace("https://1123junlin.com/wp-content/uploads/", "/images/")
+    content = md(p["body"])
+    heads = [(i, re.sub(r'<[^>]+>', '', h)) for i, h in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', content)]
+    toc = "".join(f'<li><a href="#{i}">{h}</a></li>' for i, h in heads if not h.startswith(SKIP_TOC))
+    updated = p.get("updated")
+    upd = f'<span class="upd">更新於 <time datetime="{updated}">{zh_date(updated)}</time></span>' if updated else ""
+    summary = f'<section class="tldr" aria-label="重點摘要"><p class="tldr-h">重點摘要</p><p>{esc(p.get("description",""))}</p></section>' if p.get("description") else ""
+    tocbox = f'<nav class="toc" aria-label="本文目錄"><details open><summary>本文目錄</summary><ol>{toc}</ol></details></nav>' if len(heads) >= 3 else ""
     body = f"""<div class="wrap"><header class="page-head">
-<p class="crumb"><a href="/blog/">文章</a></p>
+<p class="crumb"><a href="/">首頁</a> › <a href="/blog/">文章</a> › {esc(p.get("category",""))}</p>
 <h1>{esc(p["title"])}</h1>
-<p class="meta"><time datetime="{p["date"]}">{zh_date(p["d"])}</time><span class="tag">{esc(p.get("category",""))}</span></p>
+<p class="meta"><time datetime="{p["date"]}">{zh_date(p["d"])}</time>{upd}<span class="tag">{esc(p.get("category",""))}</span>　作者 <a href="/about/" rel="author">{PERSON}（JunLin）</a></p>
 </header>
-<article class="prose">{md(p["body"])}</article>
+<div class="post-top">{summary}{tocbox}</div>
+<article class="prose">{content}</article>
 <aside class="author" aria-label="作者介紹">
 <img src="{PORTRAIT}" alt="{PERSON}（JunLin）" loading="lazy">
 <div><p class="author-h">作者　<a href="/about/" rel="author">{PERSON}（JunLin）</a></p>
@@ -421,10 +495,23 @@ def post(p):
 <p class="author-links"><a href="/about/">完整經歷</a><a href="/services/">服務項目</a><a href="/blog/">更多文章</a></p></div>
 </aside></div>"""
     img = feat or first_img(p["body"])
-    ld = [{"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"],
-           "datePublished": p["date"], "inLanguage": "zh-TW", "url": SITE + p["path"],
-           "description": p.get("description", ""), "author": {"@id": SITE + "/#person", "@type": "Person", "name": PERSON},
-           "image": SITE + img if img else None, "articleSection": p.get("category", "")}]
+    text_only = re.sub(r'<[^>]+>', '', content)
+    art = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"],
+           "datePublished": p["date"], "dateModified": (updated + "T00:00:00+08:00") if updated else p["date"],
+           "inLanguage": "zh-TW", "url": SITE + p["path"],
+           "mainEntityOfPage": {"@type": "WebPage", "@id": SITE + p["path"]},
+           "description": p.get("description", ""),
+           "author": {"@type": "Person", "@id": SITE + "/#person", "name": PERSON, "url": SITE + "/about/"},
+           "publisher": {"@type": "Person", "@id": SITE + "/#person", "name": PERSON},
+           "articleSection": p.get("category", ""), "wordCount": len(re.sub(r'\s', '', text_only)),
+           "isPartOf": {"@type": "Blog", "name": NAME, "url": SITE + "/blog/"}}
+    if img:
+        art["image"] = SITE + img
+    ld = [art]
+    qa = faq_pairs(p["body"])
+    if qa:
+        ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]})
     write(p["path"], layout(p["title"], p.get("description", DESC), body, p["path"], ld, img, "article"))
 
 def blog():
@@ -508,6 +595,7 @@ if __name__ == "__main__":
     for s in PAGE_ORDER:
         page(s)
     services_page()
+    portfolio_page()
     blog()
     for p in posts:
         post(p)
