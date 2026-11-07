@@ -76,6 +76,16 @@ def yt_embed(m):
             f'title="{title}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" '
             f'allowfullscreen></iframe></div>')
 
+YT_ITEM = re.compile(r'<li><a href="https://www\.youtube\.com/(watch\?v=|shorts/)([\w-]+)">([^<]*)</a></li>')
+YT_LIST = re.compile(r'<ul>\s*(?:<li><a href="https://www\.youtube\.com/(?:watch\?v=|shorts/)[\w-]+">[^<]*</a></li>\s*)+</ul>')
+
+def yt_grid(m):
+    items = []
+    for it in YT_ITEM.finditer(m.group(0)):
+        frame = yt_embed(it).replace('<div class="video short">', '<div class="video short">', 1)
+        items.append(f'<figure>{frame}<figcaption>{it.group(3)}</figcaption></figure>')
+    return f'<div class="video-grid">{"".join(items)}</div>'
+
 def md(text):
     h = markdown.markdown(text, extensions=["tables", "sane_lists"])
     h = re.sub(r'<!--.*?-->', '', h, flags=re.S)
@@ -85,9 +95,10 @@ def md(text):
             return f'href="{LINKMAP.get(os.path.basename(href), href)}"'
         return m.group(0)
     h = re.sub(r'href="([^"]+)"', fix, h)
+    h = YT_LIST.sub(yt_grid, h)
+    h = YT.sub(yt_embed, h)
     h = re.sub(r'href="(https?://(?!1123junlin\.com)[^"]+)"', r'href="\1" target="_blank" rel="noopener"', h)
     h = h.replace("<img ", '<img loading="lazy" decoding="async" ')
-    h = YT.sub(yt_embed, h)
     return h
 
 def first_img(text):
@@ -135,6 +146,7 @@ def layout(title, desc, body, path, ld=None, image=None, og_type="website"):
 <a class="skip" href="#main">跳到主要內容</a>
 <header class="site-head"><div class="wrap">
 <a class="brand" href="/">JunLin<span>｜AI</span></a>
+<nav class="nav-desk" aria-label="主選單"><ul>{nav}</ul></nav>
 <details class="nav"><summary class="nav-toggle">選單</summary><ul>{nav}</ul></details>
 </div></header>
 <main id="main">
@@ -256,12 +268,63 @@ def home():
     write("/", layout(NAME, DESC, body, "/", ld))
 
 # ---------- 一般頁面 ----------
+SERVICES = [
+    ("分享", "Share", "分享知識，啟發更多可能", "透過演講、授課、訪談，分享創業觀點與 AI 應用。", "/images/2026/07/service-01.png",
+     [("明志科大「強化服務業人才韌性計畫」AI 課程", "/activities/"),
+      ("AllPlayer Studio 品牌主持，SalesWhat 訪談節目", "/interview/"),
+      ("TEDxRenaiRoad 2026 工作人員", "/2026/09/12/tedx-renairoad-2026-volunteer-reflection/")]),
+    ("建構", "Build", "落地真正能解決問題的 AI", "依需求開發 AI、自動化流程，提升團隊效率。", "/images/2026/07/service-02-3.png",
+     [("短影音人設測驗工具", "/portfolio/"),
+      ("Claude 串 GitHub 投票系統", "/portfolio/"),
+      ("AI 自動影音剪輯", "/portfolio/")]),
+    ("優化", "Optimize", "讓網站作為成長引擎", "從網站架構、內容規劃，優化搜尋能見度與使用者體驗。", "/images/2026/07/service-03.png",
+     [("ITI4 企業內部講師孵化器網站建置", "https://iti4.1123junlin.com"),
+      ("SEO 與 AIEO：讓搜尋引擎與 AI 讀懂網站", "/faq/"),
+      ("AI 時代的數位護城河課程心得", "/2026/08/30/ai-digital-moat-workshop/")]),
+    ("轉型", "Transform", "用科技打造數位轉型", "協助企業導入 AI，建立數位工作模式。", "/images/2026/07/service-04-1-1.png",
+     [("白袍人生學院：AI 加速行政效率與課程執行", "/about/"),
+      ("從科技業看 Dyson CameraJet：AI 從提醒走向執行", "/2026/09/02/dyson-camerajet-ai-toothbrush/"),
+      ("Google 我的商家課程心得", "/2026/07/25/google-business-profile-course-review/")]),
+]
+
+def services_page():
+    rows = []
+    for t, en, tag, d, icon, refs in SERVICES:
+        links = "".join(
+            f'<li><a href="{u}"{" target=_blank rel=noopener" if u.startswith("http") else ""}>{esc(n)}</a></li>' for n, u in refs)
+        rows.append(f"""<section class="svc">
+  <div class="svc-mark"><img src="{icon}" alt="" loading="lazy"><p class="svc-name">{t}<span>{en}</span></p></div>
+  <div class="svc-body"><h2>{tag}</h2><p>{d}</p></div>
+  <div class="svc-refs"><p class="svc-refs-h">做過的事</p><ul>{links}</ul></div>
+</section>""")
+    body = f"""<div class="wrap">
+<header class="page-head"><h1>服務項目</h1>
+<p class="page-lead">從分享觀念、動手建構、優化網站到協助轉型，四種合作方式可以單獨進行，也可以一路陪到落地。</p></header>
+<div class="svc-list">{"".join(rows)}</div>
+<section class="svc-cta">
+  <h2>想從哪一項開始？</h2>
+  <p>來信簡單說明現況與想解決的問題，我會依實際情況評估可行的合作方式。</p>
+  <div class="btns"><a class="btn btn-main" href="mailto:{EMAIL}">寄信討論合作</a><a class="btn btn-ghost" href="/faq/">先看常見問題</a></div>
+</section>
+</div>"""
+    ld = [{"@context": "https://schema.org", "@type": "ProfessionalService", "name": NAME, "url": SITE + "/services/",
+           "email": EMAIL, "areaServed": "TW", "founder": {"@id": SITE + "/#person"},
+           "hasOfferCatalog": {"@type": "OfferCatalog", "name": "服務項目", "itemListElement": [
+               {"@type": "Offer", "itemOffered": {"@type": "Service", "name": f"{t}：{d}"}} for t, _, _, d, _, _ in SERVICES]}}]
+    write("/services/", layout("服務", "分享、建構、優化、轉型：AI 應用講座、客製化 AI 與自動化流程、網站 SEO／AIEO 優化、企業 AI 導入。", body, "/services/", ld))
+
+GALLERY = re.compile(r'(?:<p><img [^>]+></p>\s*){2,}')
+
+def gallery(m):
+    imgs = re.findall(r'<img [^>]+>', m.group(0))
+    return '<div class="gallery">' + "".join(f'<figure>{i}</figure>' for i in imgs) + '</div>'
+
 def page(stem):
     m = pages[stem]
     body_md = re.sub(r'^# .*\n', '', m["body"], count=1)
     wide = " wide" if stem in ("portfolio", "activities") else ""
     body = f"""<div class="wrap{wide}"><header class="page-head"><h1>{esc(m["title"])}</h1></header>
-<article class="prose">{md(body_md)}</article></div>"""
+<article class="prose">{GALLERY.sub(gallery, md(body_md)) if stem == "portfolio" else md(body_md)}</article></div>"""
     ld = []
     desc = DESC
     if stem == "about":
@@ -365,6 +428,7 @@ if __name__ == "__main__":
     home()
     for s in PAGE_ORDER:
         page(s)
+    services_page()
     blog()
     for p in posts:
         post(p)
