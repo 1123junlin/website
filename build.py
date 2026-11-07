@@ -181,7 +181,38 @@ PERSON_LD = {
     "knowsLanguage": "zh-TW", "sameAs": [u for _, u in SOCIAL],
 }
 
+VARIANTS = (480, 960)
+_dims = {}
+
+def img_attrs(m):
+    tag = m.group(0)
+    src = re.search(r'src="(/images/[^"]+)"', tag)
+    if not src or "srcset=" in tag:
+        return tag
+    url = src.group(1)
+    f = OUT / urllib.parse.unquote(url).lstrip("/")
+    if not f.exists():
+        return tag
+    if f not in _dims:
+        from PIL import Image
+        try:
+            _dims[f] = Image.open(f).size
+        except Exception:
+            _dims[f] = None
+    if not _dims[f]:
+        return tag
+    w, h = _dims[f]
+    base, ext = url.rsplit(".", 1)
+    srcs = [f"{base}-{v}w.{ext} {v}w" for v in VARIANTS if (f.with_name(f"{f.stem}-{v}w{f.suffix}")).exists()]
+    extra = ""
+    if "width=" not in tag:
+        extra += f' width="{w}" height="{h}"'
+    if srcs:
+        extra += f' srcset="{", ".join(srcs + [f"{url} {w}w"])}" sizes="(max-width: 720px) 100vw, 720px"'
+    return tag[:-1].rstrip("/").rstrip() + extra + ">"
+
 def write(path, content):
+    content = re.sub(r'<img [^>]*>', img_attrs, content)
     f = OUT / path.strip("/") / "index.html" if not path.endswith(".html") else OUT / path.strip("/")
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(content, encoding="utf-8")
@@ -337,7 +368,11 @@ def page(stem):
     body = f"""<div class="wrap{wide}"><header class="page-head"><h1>{esc(m["title"])}</h1></header>
 <article class="prose">{GALLERY.sub(gallery, md(body_md)) if stem == "portfolio" else md(body_md)}</article></div>"""
     ld = []
-    desc = DESC
+    desc = {
+        "portfolio": "賴俊燐（JunLin）的作品：AI 工具、AI 作圖海報、短影音剪輯、AI 自動影音剪輯、ITI4 網站建置與 Claude 串 GitHub 投票系統。",
+        "activities": "賴俊燐（JunLin）參與與主持的活動紀錄：AllPlayer Studio 訪談、白袍人生學院高峰年會、AI 課程教學與志工服務。",
+        "interview": "賴俊燐（JunLin）擔任 AllPlayer Studio 品牌主持的 SalesWhat 訪談節目，與餐飲、社福、咖啡、藝術與品牌創辦人對談。",
+    }.get(stem, DESC)
     if stem == "about":
         ld = [{"@context": "https://schema.org", "@type": "ProfilePage", "url": SITE + "/about/", "mainEntity": PERSON_LD}]
         desc = "賴俊燐（JunLin），白袍人生學院特助兼AI應用師，協助個人與企業善用AI科技提升效率、打造品牌，推動數位轉型。"
@@ -416,6 +451,16 @@ def images():
                 shutil.copy2(f, t)
             if t.stat().st_size > f.stat().st_size:
                 shutil.copy2(f, t)
+            for w in VARIANTS:
+                if im.width > w * 1.2 and ext in (".jpg", ".jpeg", ".png", ".webp"):
+                    v = im.copy(); v.thumbnail((w, w * 10))
+                    vt = t.with_name(f"{t.stem}-{w}w{t.suffix}")
+                    if ext == ".png":
+                        v.save(vt, "PNG", optimize=True)
+                    elif ext == ".webp":
+                        v.save(vt, "WEBP", quality=80)
+                    else:
+                        v.convert("RGB").save(vt, "JPEG", quality=80, optimize=True, progressive=True)
         except Exception:
             shutil.copy2(f, t)
 
@@ -433,7 +478,7 @@ def extras():
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUT / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#3F7A9B"/><text x="32" y="43" text-anchor="middle" font-family="serif" font-size="30" fill="#fff">俊</text></svg>', encoding="utf-8")
     body = '<div class="wrap"><header class="page-head"><h1>找不到這個頁面</h1><p class="meta">網址可能已經變更。可以從<a href="/">首頁</a>或<a href="/blog/">文章列表</a>找找看。</p></header></div>'
-    (OUT / "404.html").write_text(layout("找不到頁面", DESC, body, "/404.html"), encoding="utf-8")
+    (OUT / "404.html").write_text(layout("找不到頁面", "這個頁面不存在或網址已變更，請從 JunLin｜AI 首頁或文章列表繼續瀏覽。", body, "/404.html"), encoding="utf-8")
     shutil.copytree(ROOT / "assets", OUT / "assets", dirs_exist_ok=True)
 
 if __name__ == "__main__":
@@ -441,6 +486,7 @@ if __name__ == "__main__":
     for f in OUT.iterdir():
         if f.name != "images":
             shutil.rmtree(f) if f.is_dir() else f.unlink()
+    images()
     home()
     for s in PAGE_ORDER:
         page(s)
@@ -448,6 +494,5 @@ if __name__ == "__main__":
     blog()
     for p in posts:
         post(p)
-    images()
     extras()
     print(f"完成：首頁、{len(PAGE_ORDER)+1} 個頁面、{len(posts)} 篇文章 → docs/")
