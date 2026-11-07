@@ -130,6 +130,13 @@ def layout(title, desc, body, path, ld=None, image=None, og_type="website"):
             {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(crumbs)]}]
     lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     year = posts[0]["d"][:4] if posts else "2026"
+    if path == "/":
+        foot = f'<footer class="site-foot slim"><div class="wrap"><div>© {year} {PERSON}（JunLin）</div></div></footer>'
+    else:
+        social = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL)
+        foot = (f'<footer class="site-foot"><div class="wrap">'
+                f'<div><strong>{PERSON}（JunLin）</strong><br>白袍人生學院特助兼 AI 應用師<br><a href="mailto:{EMAIL}">{EMAIL}</a></div>'
+                f'<ul>{social}</ul><div>© {year} {PERSON}</div></div></footer>')
     return f"""<!doctype html>
 <html lang="zh-Hant-TW">
 <head>
@@ -163,11 +170,7 @@ def layout(title, desc, body, path, ld=None, image=None, og_type="website"):
 <main id="main">
 {body}
 </main>
-<footer class="site-foot"><div class="wrap">
-<div><strong>{PERSON}（JunLin）</strong><br>白袍人生學院特助兼 AI 應用師<br><a href="mailto:{EMAIL}">{EMAIL}</a></div>
-<ul>{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in SOCIAL)}</ul>
-<div>© {year} {PERSON}</div>
-</div></footer>
+{foot}
 </body>
 </html>
 """

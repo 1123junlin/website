@@ -231,3 +231,4 @@ a:hover{color:var(--sora)}
 .author .author-h a{font-family:var(--serif);font-weight:700;color:var(--ink);text-decoration:none}
 .author-links{display:flex;gap:18px;flex-wrap:wrap}
 @media (max-width:520px){.author{grid-template-columns:64px 1fr;gap:16px}.author img{width:64px;height:64px}}
+.site-foot.slim{padding:24px 0 32px;border-top:0;background:var(--mist)}
