@@ -29,6 +29,8 @@ NAV = [("關於我", "/about/"), ("服務", "/services/"), ("作品", "/portfoli
        ("常見問題", "/faq/"), ("聯絡", "/#contact")]
 PAGE_ORDER = ["about", "services", "portfolio", "activities", "interview", "faq"]
 PORTRAIT = "/images/2026/07/20260711-ljl.png"
+FONTS = "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap"
+CSS = re.sub(r"/\*.*?\*/|\s*\n\s*", "", (ROOT / "assets" / "style.css").read_text(encoding="utf-8"), flags=re.S)
 
 # ---------- 讀取 ----------
 def parse(path):
@@ -119,6 +121,13 @@ def layout(title, desc, body, path, ld=None, image=None, og_type="website"):
     nav = "".join(
         f'<li><a href="{u}"{" aria-current=page" if u != "/#contact" and (path == u or (u == "/blog/" and re.match(r"^/\d{4}/", path))) else ""}>{n}</a></li>'
         for n, u in NAV)
+    if path not in ("/", "/404.html"):
+        crumbs = [("首頁", "/")]
+        if re.match(r"^/\d{4}/", path):
+            crumbs.append(("文章", "/blog/"))
+        crumbs.append((title, path))
+        ld = list(ld or []) + [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(crumbs)]}]
     lds = "".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     year = posts[0]["d"][:4] if posts else "2026"
     return f"""<!doctype html>
@@ -138,8 +147,10 @@ def layout(title, desc, body, path, ld=None, image=None, og_type="website"):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="preload" as="style" href="{FONTS}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{FONTS}"></noscript>
+{'<link rel="preload" as="image" href="'+PORTRAIT+'" fetchpriority="high">' if path == "/" else ''}
+<style>{CSS}</style>
 {lds}
 </head>
 <body>
@@ -351,7 +362,12 @@ def post(p):
 <p class="meta"><time datetime="{p["date"]}">{zh_date(p["d"])}</time><span class="tag">{esc(p.get("category",""))}</span></p>
 </header>
 <article class="prose">{md(p["body"])}</article>
-<div class="post-foot"><a href="/blog/">回到文章列表</a>　·　作者：<a href="/about/">{PERSON}（JunLin）</a></div></div>"""
+<aside class="author" aria-label="作者介紹">
+<img src="{PORTRAIT}" alt="{PERSON}（JunLin）" loading="lazy">
+<div><p class="author-h">作者　<a href="/about/" rel="author">{PERSON}（JunLin）</a></p>
+<p>白袍人生學院特助兼 AI 應用師，曾任財團法人工業技術研究院課程規劃管理師。專注 AI 應用規劃、課程執行、網站維護與行政流程優化。</p>
+<p class="author-links"><a href="/about/">完整經歷</a><a href="/services/">服務項目</a><a href="/blog/">更多文章</a></p></div>
+</aside></div>"""
     img = feat or first_img(p["body"])
     ld = [{"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"],
            "datePublished": p["date"], "inLanguage": "zh-TW", "url": SITE + p["path"],

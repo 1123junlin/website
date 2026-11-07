@@ -223,3 +223,11 @@ a:hover{color:var(--sora)}
 @media (max-width:860px){.nav-desk{display:none}}
 .wide .prose .gallery img{max-width:100%;width:100%;height:auto}
 .wide .prose .video-grid{max-width:960px}
+/* 文章作者介紹 */
+.author{display:grid;grid-template-columns:88px 1fr;gap:22px;align-items:start;max-width:var(--read);border-top:1px solid var(--ink);padding:28px 0 88px}
+.author img{width:88px;height:88px;border-radius:50%;object-fit:cover;object-position:top;background:var(--mist)}
+.author p{margin:0 0 8px;color:var(--sub);font-size:15px;line-height:1.8}
+.author .author-h{color:var(--ink);font-size:16px}
+.author .author-h a{font-family:var(--serif);font-weight:700;color:var(--ink);text-decoration:none}
+.author-links{display:flex;gap:18px;flex-wrap:wrap}
+@media (max-width:520px){.author{grid-template-columns:64px 1fr;gap:16px}.author img{width:64px;height:64px}}
