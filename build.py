@@ -220,6 +220,20 @@ def write(path, content):
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(content, encoding="utf-8")
 
+
+# 服務圖示：細線條 SVG，顏色跟著主色
+_S = 'viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"'
+ICONS = {
+    # 分享：兩個對話框
+    "/images/2026/07/service-01.png": f'<svg {_S}><path d="M8 11h20a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H17l-6 5v-5H8a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3z"/><path d="M31 18h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-3v5l-6-5h-7a3 3 0 0 1-3-3v-1"/><path d="M11 17.5h14M11 21h9"/></svg>',
+    # 建構：疊起來的積木加程式括號
+    "/images/2026/07/service-02-3.png": f'<svg {_S}><rect x="6" y="26" width="16" height="14" rx="2"/><rect x="26" y="26" width="16" height="14" rx="2"/><rect x="16" y="8" width="16" height="14" rx="2"/><path d="M21.5 12.5 19 15l2.5 2.5M26.5 12.5 29 15l-2.5 2.5"/></svg>',
+    # 優化：上升折線加放大鏡
+    "/images/2026/07/service-03.png": f'<svg {_S}><path d="M6 40h36"/><path d="M8 32l8-8 6 5 10-12"/><path d="M27 17h5v5"/><circle cx="35" cy="31" r="5"/><path d="m38.5 34.5 4 4"/></svg>',
+    # 轉型：循環箭頭圍著方塊
+    "/images/2026/07/service-04-1-1.png": f'<svg {_S}><path d="M38 20a15 15 0 0 0-26.5-5"/><path d="M11 8v7h7"/><path d="M10 28a15 15 0 0 0 26.5 5"/><path d="M37 40v-7h-7"/><rect x="18" y="18" width="12" height="12" rx="2"/></svg>',
+}
+
 # ---------- 首頁 ----------
 def post_card(p):
     img = p.get("featured_image", "").replace("https://1123junlin.com/wp-content/uploads/", "/images/") or first_img(p["body"])
@@ -274,7 +288,7 @@ def home():
 
 <section class="sec"><div class="wrap">
   <div class="sec-head"><div><h2>四大服務</h2><p>從分享觀念到實際落地，陪個人與企業走完 AI 導入的每一步。</p></div><a class="more" href="/services/">服務項目</a></div>
-  <div class="pillars">{"".join(f'<div class="pillar"><img src="{i}" alt="" loading="lazy"><h3>{t}</h3><p class="en">{e}</p><p>{d}</p></div>' for t,e,d,i in pillars)}</div>
+  <div class="pillars">{"".join(f'<div class="pillar"><span class="ico">{ICONS[i]}</span><h3>{t}</h3><p class="en">{e}</p><p>{d}</p></div>' for t,e,d,i in pillars)}</div>
 </div></section>
 
 <section class="sec tint"><div class="wrap">
@@ -338,7 +352,7 @@ def services_page():
         links = "".join(
             f'<li><a href="{u}"{" target=_blank rel=noopener" if u.startswith("http") else ""}>{esc(n)}</a></li>' for n, u in refs)
         rows.append(f"""<section class="svc">
-  <div class="svc-mark"><img src="{icon}" alt="" loading="lazy"><p class="svc-name">{t}<span>{en}</span></p></div>
+  <div class="svc-mark"><span class="ico">{ICONS[icon]}</span><p class="svc-name">{t}<span>{en}</span></p></div>
   <div class="svc-body"><h2>{tag}</h2><p>{d}</p></div>
   <div class="svc-refs"><p class="svc-refs-h">做過的事</p><ul>{links}</ul></div>
 </section>""")

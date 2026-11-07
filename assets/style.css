@@ -232,3 +232,10 @@ a:hover{color:var(--sora)}
 .author-links{display:flex;gap:18px;flex-wrap:wrap}
 @media (max-width:520px){.author{grid-template-columns:64px 1fr;gap:16px}.author img{width:64px;height:64px}}
 .site-foot.slim{padding:24px 0 32px;border-top:0;background:var(--mist)}
+/* 服務圖示 */
+.ico{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:50%;background:var(--mist);color:var(--sora);margin-bottom:18px}
+.ico svg{width:42px;height:42px}
+.svc-mark .ico{width:84px;height:84px;margin-bottom:14px}
+.svc-mark .ico svg{width:44px;height:44px}
+.sec.tint .ico{background:var(--surface)}
+@media (max-width:600px){.svc-mark .ico{width:64px;height:64px;margin:0}.svc-mark .ico svg{width:34px;height:34px}}
