@@ -803,6 +803,163 @@ html.static .caret { display: none; }
   .reveal .slides section *, .reveal .slides section *::before, .reveal .slides section *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; }
 }
 .chapter > *:not(aside) { position: relative; }
+
+/* 直播版面：右側約 37% 會疊上講者與主持人的人像框，所有內容限制在左側（x ≤ 780px，以 1280×720 畫布計）。
+   字級維持手機可讀標準：內文最小約 30px。 */
+.reveal .slides section { padding: 0 500px 0 56px !important; box-sizing: border-box; }
+.reveal h2 { font-size: 54px; margin-bottom: 18px; }
+.lead { font-size: 31px; }
+.note { font-size: 30px; padding: 14px 22px; margin-top: 18px; }
+
+/* 封面、結尾 */
+.cover h1 { font-size: 78px; }
+.cover .coversub { font-size: 38px; }
+.endrow { display: flex; align-items: center; gap: 36px; margin-top: 26px; }
+.end .qrcard { width: 230px; }
+.end .who { margin: 0; }
+
+/* 提問頁改成靠左 */
+.q { text-align: left !important; }
+.q .chip { margin: 0 0 24px; }
+.qbig { font-size: 80px; }
+.qsub { font-size: 34px; }
+
+/* 章節頁 */
+.chapter h1 { font-size: 76px; }
+
+/* 直排卡片列 */
+.rows { display: flex; flex-direction: column; gap: 14px; }
+.row { display: flex; align-items: center; gap: 22px; background: var(--card); border-radius: 16px; padding: 14px 22px; border-left: 8px solid var(--c, var(--teal)); }
+.row .rk { flex: none; width: 190px; font-size: 40px; font-weight: 900; color: var(--c, var(--teal)); line-height: 1.2; }
+.row .rt { font-size: 32px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.row .rd { font-size: 30px; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+.rows.tight { gap: 10px; }
+.rows.tight .row { padding: 10px 22px; }
+.rows.tight .rk { width: 120px; font-size: 38px; }
+.about-fix {}
+
+/* 自我介紹今天帶走 */
+.take { margin-top: 26px; gap: 12px; }
+.take span:not(.tl) { font-size: 31px; padding: 10px 18px; }
+
+/* 勾選清單兩欄 */
+.big { font-size: 52px; margin: 0 0 14px; }
+.reveal ul.checks.two { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; font-size: 32px; }
+.reveal ul.checks.two li { padding: 12px 0 12px 48px; }
+
+/* 提問公式 */
+.parts { gap: 10px; }
+.part { padding: 10px 4px; }
+.part b { font-size: 36px; } .part span { font-size: 26px; }
+.viz { height: 300px; }
+.viz .pane { font-size: 32px; padding: 50px 24px 16px; line-height: 1.45; }
+.viz .before p { font-size: 42px; }
+
+/* 對話示意 */
+.chatwin { padding: 14px 20px; gap: 10px; }
+.msg { font-size: 31px; max-width: 100%; }
+.techwhy { font-size: 31px; font-weight: 700; color: var(--text); margin: -4px 0 14px; line-height: 1.4; }
+.techwhy b { color: var(--amber); }
+.techwhy .fit { display: block; font-size: 28px; color: var(--teal); font-weight: 700; margin-top: 2px; }
+.reveal table.mini { font-size: 30px; }
+
+/* 會議記錄前後 */
+.ba { grid-template-columns: 1fr 1.15fr; gap: 16px; align-items: stretch; }
+.ba .card { padding: 16px 18px; }
+.reveal ul.raw { font-size: 30px; }
+.reveal table.todo { font-size: 30px; }
+.reveal table.todo th, .reveal table.todo td { padding: 6px 6px; }
+.reveal table.todo th { font-size: 26px; }
+
+/* Prompt 範本 */
+.promptbox { padding: 16px 22px; }
+.reveal .promptbox pre { font-size: 29px; line-height: 1.42; }
+.reveal ul.tips { margin-top: 14px; font-size: 30px; }
+.reveal ul.tips li { padding: 8px 18px; margin: 0 0 8px; }
+
+/* 直排流程 */
+.reveal ol.vflow { list-style: none; margin: 4px 0 0; padding: 0; position: relative; }
+.reveal ol.vflow::before { content: ''; position: absolute; left: 25px; top: 20px; bottom: 20px; width: 4px; background: var(--line); border-radius: 2px; }
+.reveal ol.vflow li { position: relative; display: flex; align-items: baseline; gap: 18px; margin: 0 0 12px; padding: 0; font-size: 34px; }
+.vflow .no { flex: none; position: relative; width: 54px; height: 54px; border-radius: 50%; background: var(--c); color: var(--bg); font-weight: 900; font-size: 30px; display: flex; align-items: center; justify-content: center; align-self: center; }
+.vflow b { color: var(--c); }
+.vflow .dp { font-size: 29px; color: var(--muted); }
+.note.big2 { font-size: 36px; text-align: left; }
+
+/* 測驗直排 */
+.quiz { display: flex; flex-direction: column; gap: 14px; }
+.quiz .opt { min-height: 0; display: flex; gap: 20px; align-items: center; padding: 16px 22px; }
+.quiz .lt { font-size: 52px; margin: 0; }
+.quiz .opt p { font-size: 32px; }
+
+/* 翻卡直排（上下翻） */
+.fliprows { display: flex; flex-direction: column; gap: 16px; }
+.reveal .fragment.custom.fliprows { opacity: 1; visibility: inherit; transform: none; }
+.fliprows .flip { height: 110px; }
+.fliprows .flip .front, .fliprows .flip .back { font-size: 34px; border-top: none; border-left: 8px solid var(--dim); justify-content: flex-start; padding: 0 26px; }
+.fliprows .flip .back { transform: rotateX(180deg); border-left-color: var(--c); }
+.fliprows.visible .flip:not(.off) .inner, .fliprows .flip.on .inner { transform: rotateX(180deg); }
+html.static .fliprows .flip .inner { transform: none !important; }
+html.static .fliprows .flip .back { transform: none; }
+
+/* 三家工具卡 */
+.tools { display: flex; flex-direction: column; gap: 12px; }
+.tool { background: var(--card); border-radius: 16px; padding: 12px 22px; border-left: 8px solid var(--c); }
+.tool.green { --c: var(--green); } .tool.amber { --c: var(--amber); } .tool.teal { --c: var(--teal); }
+.tool .tn { font-size: 34px; font-weight: 900; color: var(--c); line-height: 1.2; }
+.tool .tl1 { font-size: 30px; color: var(--text); line-height: 1.35; }
+.tool .tl2 { font-size: 28px; color: var(--muted); }
+.asof { text-align: left; }
+.tools + .asof + .note { font-size: 28px; margin-top: 8px; }
+
+/* 示範時間軸 */
+.reveal ol.timeline li { grid-template-columns: 80px 1fr; gap: 14px; padding: 8px 0; }
+.timeline li b { display: block; font-size: 33px; }
+.timeline .dp { font-size: 28px; }
+
+/* FAQ 直排 */
+.fq { grid-template-columns: 1fr; gap: 4px; padding: 14px 22px; }
+.fq .qq { font-size: 36px; }
+.fq .aa { font-size: 30px; }
+
+/* 免費 vs 付費直排 */
+.vs { display: flex; flex-direction: column; gap: 12px; }
+.vs .card { padding: 12px 22px; }
+.vs .vh { font-size: 32px; margin-bottom: 2px; }
+.reveal .vs ul { font-size: 29px; }
+.reveal .vs li { margin: 2px 0; }
+
+/* 試算 */
+.calc { grid-template-columns: 1fr; gap: 16px; }
+.ctrls { flex-direction: row; gap: 14px; }
+.ctl { flex: 1; padding: 12px 18px; font-size: 30px; }
+.ctl b { font-size: 46px; min-width: 70px; }
+.res { padding: 16px 22px; }
+.res .rbig { font-size: 36px; margin: 0 0 8px; }
+.res .mv { font-size: 56px; }
+
+/* 作業步驟 */
+.reveal ol.steps li { font-size: 36px; margin-bottom: 12px; }
+.steps li span { font-size: 30px; }
+
+/* 修正：高度與寬度 */
+.slider { width: 100%; box-sizing: border-box; margin: 6px 0 0; }
+.tool { padding: 10px 22px; }
+.tool .tn { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.tool .tl2 { font-weight: 400; }
+.reveal ol.timeline { margin-top: 0; }
+.reveal ol.timeline li { padding: 5px 0; font-size: 32px; align-items: center; }
+.timeline li b { font-size: 32px; line-height: 1.25; }
+.timeline .dp { display: block; font-size: 27px; line-height: 1.3; }
+.timeline .tm { font-size: 32px; }
+.vs .card { padding: 8px 22px; }
+.vs .vh { font-size: 30px; }
+.reveal .vs ul { font-size: 28px; }
+.reveal .vs li { margin: 0; line-height: 1.3; }
+.ba .card { padding: 12px 16px; }
+.reveal ul.raw li { margin: 2px 0; line-height: 1.3; }
+.viz { overflow: hidden; }
+.rows.wide .rk { width: 250px; font-size: 38px; }
 </style>
 </head>
 <body>
@@ -817,7 +974,7 @@ html.static .caret { display: none; }
 
 <!-- 2 about -->
 <section><div class="chip ">開場</div><h2>我是 Rex</h2>
-      <div class="grid g3"><div class="a card center amber" style="--i:1"><div class="k">白袍人生學院</div><div class="t">特助</div></div><div class="a card center teal" style="--i:2"><div class="k">前工研院</div><div class="t">PM</div></div><div class="a card center green" style="--i:3"><div class="k">明志科大</div><div class="t">AI 計畫課程講師</div></div></div>
+      <div class="rows wide"><div class="a row amber" style="--i:1"><div class="rk">白袍人生學院</div><div class="rt">特助</div></div><div class="a row teal" style="--i:2"><div class="rk">前工研院</div><div class="rt">PM</div></div><div class="a row green" style="--i:3"><div class="rk">明志科大</div><div class="rt">AI 計畫課程講師</div></div></div>
       <div class="take"><span class="tl">今天帶走</span><span class="fragment fade-up"><b>1</b>一個起手工具</span><span class="fragment fade-up"><b>2</b>一個提問公式</span><span class="fragment fade-up"><b>3</b>一個自己的 AI 助手</span></div></section>
 
 <!-- 3 question -->
@@ -828,25 +985,24 @@ html.static .caret { display: none; }
 
 <!-- 5 cards -->
 <section><div class="chip ">01　工具這麼多，先從哪裡開始？</div><h2>你是不是也這樣？</h2>
-      <div class="grid g3"><div class="card center amber fragment fade-up"><div class="k">收藏</div><div class="t">存了一堆 AI 教學</div><div class="d">但一篇都還沒照著做</div></div><div class="card center teal fragment fade-up"><div class="k">卡住</div><div class="t">打開工具</div><div class="d">不知道第一句該問什麼</div></div><div class="card center coral fragment fade-up"><div class="k">放棄</div><div class="t">試一次不太準</div><div class="d">就覺得 AI 沒什麼用</div></div></div>
+      <div class="rows"><div class="row amber fragment fade-up"><div class="rk">收藏</div><div class="rb"><div class="rt">存了一堆 AI 教學</div><div class="rd">但一篇都還沒照著做</div></div></div><div class="row teal fragment fade-up"><div class="rk">卡住</div><div class="rb"><div class="rt">打開工具</div><div class="rd">不知道第一句該問什麼</div></div></div><div class="row coral fragment fade-up"><div class="rk">放棄</div><div class="rb"><div class="rt">試一次不太準</div><div class="rd">就覺得 AI 沒什麼用</div></div></div></div>
       <div class="a note" style="--i:3">問題不在你，是還沒找到<b>第一個用得上的情境</b></div></section>
 
 <!-- 6 cards -->
 <section><div class="chip ">01　工具這麼多，先從哪裡開始？</div><h2>主流的聊天型 AI</h2><p class="lead">四個都有免費版，功能越來越接近</p>
-      <div class="grid g2"><div class="card green fragment fade-up"><div class="k">ChatGPT</div><div class="t">最多人用</div><div class="d">功能最齊全，教學資源最多</div></div><div class="card teal fragment fade-up"><div class="k">Gemini</div><div class="t">Google 家的</div><div class="d">跟 Gmail、雲端硬碟整合</div></div><div class="card amber fragment fade-up"><div class="k">Claude</div><div class="t">擅長長文</div><div class="d">讀長文件、寫作口吻自然</div></div><div class="card coral fragment fade-up"><div class="k">Copilot</div><div class="t">微軟家的</div><div class="d">Windows、Office 裡就有</div></div></div>
+      <div class="rows"><div class="row green fragment fade-up"><div class="rk">ChatGPT</div><div class="rb"><div class="rt">最多人用</div><div class="rd">功能最齊全，教學資源最多</div></div></div><div class="row teal fragment fade-up"><div class="rk">Gemini</div><div class="rb"><div class="rt">Google 家的</div><div class="rd">跟 Gmail、雲端硬碟整合</div></div></div><div class="row amber fragment fade-up"><div class="rk">Claude</div><div class="rb"><div class="rt">擅長長文</div><div class="rd">讀長文件、寫作口吻自然</div></div></div><div class="row coral fragment fade-up"><div class="rk">Copilot</div><div class="rb"><div class="rt">微軟家的</div><div class="rd">Windows、Office 裡就有</div></div></div></div>
       </section>
 
 <!-- 7 checklist -->
 <section><div class="chip ">01　工具這麼多，先從哪裡開始？</div><h2>新手怎麼選？</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr;align-items:center;gap:40px">
-        <p class="a big" style="--i:1">先挑一個主力，<br>連續用兩週</p>
-        <ul class="checks"><li class="fragment fade-up">手機有沒有 App</li><li class="fragment fade-up">免費版夠不夠用</li><li class="fragment fade-up">公司允不允許</li><li class="fragment fade-up">身邊的人用哪個</li></ul>
-      </div><div class="a note" style="--i:3">還是選不出來？就選<b>身邊最多人用的那個</b>，有問題有人可以問</div></section>
+      <p class="a big" style="--i:1">先挑一個主力，連續用兩週</p>
+      <ul class="checks two"><li class="fragment fade-up">手機有沒有 App</li><li class="fragment fade-up">免費版夠不夠用</li><li class="fragment fade-up">公司允不允許</li><li class="fragment fade-up">身邊的人用哪個</li></ul>
+      <div class="a note" style="--i:3">還是選不出來？就選<b>身邊最多人用的那個</b>，有問題有人可以問</div></section>
 
 <!-- 8 formula -->
 <section><div class="chip ">01　工具這麼多，先從哪裡開始？</div><h2>第一句話怎麼問？</h2>
-      <div class="parts"><div class="a part pop amber" style="--i:1"><b>角色</b><span>你是誰</span></div><div class="a plus" style="--i:2">＋</div><div class="a part pop teal" style="--i:3"><b>任務</b><span>要做什麼</span></div><div class="a plus" style="--i:4">＋</div><div class="a part pop green" style="--i:5"><b>背景</b><span>給它資訊</span></div><div class="a plus" style="--i:6">＋</div><div class="a part pop coral" style="--i:7"><b>格式</b><span>要什麼樣子</span></div></div>
-      <div class="a viz" style="--i:9">
+      <div class="parts"><div class="a part pop amber" style="--i:1"><b>角色</b><span>你是誰</span></div><div class="a part pop teal" style="--i:2"><b>任務</b><span>要做什麼</span></div><div class="a part pop green" style="--i:3"><b>背景</b><span>給它資訊</span></div><div class="a part pop coral" style="--i:4"><b>格式</b><span>要什麼樣子</span></div></div>
+      <div class="a viz" style="--i:6">
         <div class="pane before"><span class="lbl l">只說一句</span><p>幫我寫一封請假信</p></div>
         <div class="pane after"><span class="lbl r">四要素</span><p><b class="amber">你是我的文書小幫手。</b><b class="teal">幫我寫一封請假信給主管，</b><b class="green">我下週三要帶小孩看牙醫，工作已經請同事代班。</b><b class="coral">150 字內，語氣客氣。</b></p></div>
         <div class="divider"></div>
@@ -859,7 +1015,7 @@ html.static .caret { display: none; }
 
 <!-- 10 cards -->
 <section><div class="chip ">02　除了聊天，AI 還能做什麼？</div><h2>AI 能幫你做的五類事</h2>
-      <div class="grid g5"><div class="card center amber fragment fade-up"><div class="k">寫</div><div class="t">信件・貼文</div></div><div class="card center teal fragment fade-up"><div class="k">整理</div><div class="t">會議・筆記</div></div><div class="card center green fragment fade-up"><div class="k">看</div><div class="t">照片・PDF</div></div><div class="card center coral fragment fade-up"><div class="k">做</div><div class="t">表格・簡報</div></div><div class="card center teal fragment fade-up"><div class="k">查</div><div class="t">上網找資料</div></div></div>
+      <div class="rows tight"><div class="row amber fragment fade-up"><div class="rk">寫</div><div class="rb"><div class="rt">信件・貼文</div></div></div><div class="row teal fragment fade-up"><div class="rk">整理</div><div class="rb"><div class="rt">會議・筆記</div></div></div><div class="row green fragment fade-up"><div class="rk">看</div><div class="rb"><div class="rt">照片・PDF</div></div></div><div class="row coral fragment fade-up"><div class="rk">做</div><div class="rb"><div class="rt">表格・簡報</div></div></div><div class="row teal fragment fade-up"><div class="rk">查</div><div class="rb"><div class="rt">上網找資料</div></div></div></div>
       <div class="a note" style="--i:3">下面兩頁示範「看」：丟檔案、丟照片</div></section>
 
 <!-- 11 chat -->
@@ -885,120 +1041,90 @@ html.static .caret { display: none; }
 <section><div class="chip ">工作</div><h2>會議記錄 → 待辦清單</h2>
       <div class="ba">
         <div class="a card" style="--i:1"><div class="t muted">原本的記錄</div><ul class="raw"><li class="a" style="--i:2">下週活動場地還沒定</li><li class="a" style="--i:3">小美說海報週五前可以給</li><li class="a" style="--i:4">預算要再跟主管確認一下</li><li class="a" style="--i:5">報名表誰要做？阿明好像可以</li></ul></div>
-        <div class="arrowbig fragment fade-right" data-fragment-index="0">→</div>
-        <div class="card fragment fade-left" data-fragment-index="0"><table class="todo"><thead><tr><th>誰</th><th>做什麼</th><th>何時</th></tr></thead>
+        <div class="card fragment fade-left"><div class="t muted">AI 整理後</div><table class="todo"><thead><tr><th>誰</th><th>做什麼</th><th>何時</th></tr></thead>
           <tbody><tr class="rowin" style="--i:0"><td>小美</td><td>交海報</td><td>週五</td></tr><tr class="rowin" style="--i:1"><td>阿明</td><td>做報名表</td><td>待確認</td></tr><tr class="rowin" style="--i:2"><td>我</td><td>問主管預算</td><td>本週</td></tr><tr class="rowin" style="--i:3"><td>—</td><td>場地</td><td><span class="coral">未分配</span></td></tr></tbody></table></div>
       </div><div class="a note" style="--i:6"><b>這樣問：</b>把這段會議記錄整理成表格：誰、做什麼、何時；沒講清楚的標「待確認」</div></section>
 
 <!-- 15 prompt -->
 <section><div class="chip ">工作</div><h2>活動通知信，一次寫好</h2>
-      <div class="grid" style="grid-template-columns:1.35fr 1fr;align-items:start;gap:28px">
-        <div class="a promptbox shimmer" style="--i:1"><pre>你是活動承辦人。
+      <div class="a promptbox shimmer" style="--i:1"><pre>你是活動承辦人。
 幫我寫一封給報名者的行前通知信。
-
 活動：週六上午 9 點，台北某會議室
 要提醒：帶身分證、提早 15 分鐘報到
-
 150 字內，語氣親切，
 最後附一段常見問題。</pre></div>
-        <ul class="tips"><li class="fragment fade-up">四要素都在：角色、任務、背景、格式</li><li class="fragment fade-up">寫好後再說「更口語一點」，它會改</li><li class="fragment fade-up">日期地點自己再核對一次</li></ul>
-      </div></section>
+      <ul class="tips"><li class="fragment fade-up">四要素都在：角色、任務、背景、格式</li><li class="fragment fade-up">寫好後再說「更口語一點」，它會改</li><li class="fragment fade-up">日期地點自己再核對一次</li></ul></section>
 
 <!-- 16 cards -->
 <section><div class="chip ">生活</div><h2>生活裡的小事</h2>
-      <div class="grid g3"><div class="card center teal fragment fade-up"><div class="k">出遊</div><div class="t">排行程</div><div class="d">「兩天一夜、帶長輩、不想走太多路」</div></div><div class="card center amber fragment fade-up"><div class="k">記帳</div><div class="t">整理花費</div><div class="d">把發票照片丟給它，分類加總</div></div><div class="card center green fragment fade-up"><div class="k">學習</div><div class="t">當家教</div><div class="d">「考我 5 題，答錯再解釋」</div></div></div>
+      <div class="rows"><div class="row teal fragment fade-up"><div class="rk">出遊</div><div class="rb"><div class="rt">排行程</div><div class="rd">「兩天一夜、帶長輩、不想走太多路」</div></div></div><div class="row amber fragment fade-up"><div class="rk">記帳</div><div class="rb"><div class="rt">整理花費</div><div class="rd">把發票照片丟給它，分類加總</div></div></div><div class="row green fragment fade-up"><div class="rk">學習</div><div class="rb"><div class="rt">當家教</div><div class="rd">「考我 5 題，答錯再解釋」</div></div></div></div>
       </section>
 
 <!-- 17 cards -->
 <section><div class="chip amber">免費版就能做</div><h2>5 個讓 AI 更好用的提問技巧</h2>
-      <div class="grid g5"><div class="card center amber fragment fade-up"><div class="k">反問</div><div class="t">讓 AI<br>先問你</div></div><div class="card center teal fragment fade-up"><div class="k">範例</div><div class="t">給範例<br>照著寫</div></div><div class="card center green fragment fade-up"><div class="k">對練</div><div class="t">請它<br>扮演對方</div></div><div class="card center coral fragment fade-up"><div class="k">大綱</div><div class="t">先選方向<br>再寫全文</div></div><div class="card center teal fragment fade-up"><div class="k">審稿</div><div class="t">請它<br>挑毛病</div></div></div>
+      <div class="rows tight"><div class="row amber fragment fade-up"><div class="rk">反問</div><div class="rb"><div class="rt">讓 AI 先問你</div></div></div><div class="row teal fragment fade-up"><div class="rk">範例</div><div class="rb"><div class="rt">給範例 照著寫</div></div></div><div class="row green fragment fade-up"><div class="rk">對練</div><div class="rb"><div class="rt">請它 扮演對方</div></div></div><div class="row coral fragment fade-up"><div class="rk">大綱</div><div class="rb"><div class="rt">先選方向 再寫全文</div></div></div><div class="row teal fragment fade-up"><div class="rk">審稿</div><div class="rb"><div class="rt">請它 挑毛病</div></div></div></div>
       <div class="a note" style="--i:3">不是換關鍵字，是換<b>跟 AI 合作的方式</b></div></section>
 
 <!-- 18 tech -->
 <section>
       <div class="chip amber">免費版技巧 1／5</div><h2>讓 AI 先問你</h2>
-      <div class="techgrid">
-        <div class="techside">
-          <div class="a card why" style="--i:1"><div class="lab">為什麼有用</div><div class="tx">不知道該給什麼背景時，<b>讓它來問你</b></div></div>
-          <div class="a card fit" style="--i:2"><div class="lab">適合</div><div class="tx">規劃・選購・做決定</div></div>
-        </div>
-        <div class="chatwin">
-          <div class="a msg user fromright" style="--i:3"><p>我想幫爸媽辦 60 歲生日聚餐。<em>先不要給建議，一次問我一個問題，問完 5 題再幫我規劃。</em></p></div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai fragment fade-up"><p>好的，第 1 題：</p><p>爸媽比較喜歡<b>熱鬧的餐廳</b>，還是<b>安靜能聊天的包廂</b>？</p></div>
-        </div>
+      <div class="a techwhy" style="--i:1">不知道該給什麼背景時，<b>讓它來問你</b><span class="fit">適合：規劃・選購・做決定</span></div>
+      <div class="chatwin">
+        <div class="a msg user fromright" style="--i:2"><p>我想幫爸媽辦 60 歲生日聚餐。<em>先不要給建議，一次問我一個問題，問完 5 題再幫我規劃。</em></p></div>
+        <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="msg ai fragment fade-up"><p>好的，第 1 題：</p><p>爸媽比較喜歡<b>熱鬧的餐廳</b>，還是<b>安靜能聊天的包廂</b>？</p></div>
       </div></section>
 
 <!-- 19 tech -->
 <section>
       <div class="chip amber">免費版技巧 2／5</div><h2>給範例，讓它照著寫</h2>
-      <div class="techgrid">
-        <div class="techside">
-          <div class="a card why" style="--i:1"><div class="lab">為什麼有用</div><div class="tx">說不清楚的風格，<b>給一個範例最快</b></div></div>
-          <div class="a card fit" style="--i:2"><div class="lab">適合</div><div class="tx">貼文・信件・報告格式</div></div>
-        </div>
-        <div class="chatwin">
-          <div class="a msg user fromright" style="--i:3"><div class="att"><span class="ic">貼上</span><div><b>上次的活動貼文</b><small>整段文字</small></div></div><p>這是我上次寫的貼文。<em>照它的語氣、長度和 emoji 用法</em>，寫下週讀書會的公告。</p></div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai fragment fade-up"><p>📚 下週六讀書會開放報名！</p><p>…（語氣、長度都跟你上次那篇一樣）</p></div>
-        </div>
+      <div class="a techwhy" style="--i:1">說不清楚的風格，<b>給一個範例最快</b><span class="fit">適合：貼文・信件・報告格式</span></div>
+      <div class="chatwin">
+        <div class="a msg user fromright" style="--i:2"><div class="att"><span class="ic">貼上</span><div><b>上次的活動貼文</b><small>整段文字</small></div></div><p>這是我上次寫的貼文。<em>照它的語氣、長度和 emoji 用法</em>，寫下週讀書會的公告。</p></div>
+        <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="msg ai fragment fade-up"><p>📚 下週六讀書會開放報名！</p><p>…（語氣、長度都跟你上次那篇一樣）</p></div>
       </div></section>
 
 <!-- 20 tech -->
 <section>
       <div class="chip amber">免費版技巧 3／5</div><h2>請它扮演對方，先練習</h2>
-      <div class="techgrid">
-        <div class="techside">
-          <div class="a card why" style="--i:1"><div class="lab">為什麼有用</div><div class="tx">重要的對話先演練，<b>正式上場不慌</b></div></div>
-          <div class="a card fit" style="--i:2"><div class="lab">適合</div><div class="tx">提案・面試・談判</div></div>
-        </div>
-        <div class="chatwin">
-          <div class="a msg user fromright" style="--i:3"><p>你扮演很在意預算的主管。我要提案買新的會議設備，<em>你負責挑毛病，一次只回一句</em>，最後幫我評分。</p></div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai fragment fade-up"><p>（主管）</p><p>「現在的設備還能用，<b>為什麼要花這筆錢？</b>」</p></div>
-        </div>
+      <div class="a techwhy" style="--i:1">重要的對話先演練，<b>正式上場不慌</b><span class="fit">適合：提案・面試・談判</span></div>
+      <div class="chatwin">
+        <div class="a msg user fromright" style="--i:2"><p>你扮演很在意預算的主管。我要提案買新的會議設備，<em>你負責挑毛病，一次只回一句</em>，最後幫我評分。</p></div>
+        <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="msg ai fragment fade-up"><p>（主管）</p><p>「現在的設備還能用，<b>為什麼要花這筆錢？</b>」</p></div>
       </div></section>
 
 <!-- 21 tech -->
 <section>
       <div class="chip amber">免費版技巧 4／5</div><h2>先要大綱，再寫全文</h2>
-      <div class="techgrid">
-        <div class="techside">
-          <div class="a card why" style="--i:1"><div class="lab">為什麼有用</div><div class="tx">方向對了再花力氣，<b>省下大改的時間</b></div></div>
-          <div class="a card fit" style="--i:2"><div class="lab">適合</div><div class="tx">文章・講稿・企劃</div></div>
-        </div>
-        <div class="chatwin">
-          <div class="a msg user fromright" style="--i:3"><p>我要在公司分享「時間管理」。<em>先給我 3 種不同切入角度的大綱</em>，每種 3 點，我選好再寫講稿。</p></div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai fragment fade-up"><p>A　從「常見迷思」切入</p><p>B　從「一天的流程」切入</p><p>C　從「好用工具」切入</p><p><span class="src">你想用哪一個？</span></p></div>
-        </div>
+      <div class="a techwhy" style="--i:1">方向對了再花力氣，<b>省下大改的時間</b><span class="fit">適合：文章・講稿・企劃</span></div>
+      <div class="chatwin">
+        <div class="a msg user fromright" style="--i:2"><p>我要在公司分享「時間管理」。<em>先給我 3 種不同切入角度的大綱</em>，每種 3 點，我選好再寫講稿。</p></div>
+        <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="msg ai fragment fade-up"><p>A　從「常見迷思」切入</p><p>B　從「一天的流程」切入</p><p>C　從「好用工具」切入</p><p><span class="src">你想用哪一個？</span></p></div>
       </div></section>
 
 <!-- 22 tech -->
 <section>
       <div class="chip amber">免費版技巧 5／5</div><h2>請它當審稿人</h2>
-      <div class="techgrid">
-        <div class="techside">
-          <div class="a card why" style="--i:1"><div class="lab">為什麼有用</div><div class="tx">讓 AI 當第二雙眼睛，<b>抓自己看不到的問題</b></div></div>
-          <div class="a card fit" style="--i:2"><div class="lab">適合</div><div class="tx">重要信件・報告・履歷</div></div>
-        </div>
-        <div class="chatwin">
-          <div class="a msg user fromright" style="--i:3"><p>幫我檢查這封信的錯字、太硬的語氣、主管可能誤會的句子。<em>用表格列出：原句｜問題｜建議</em>。</p></div>
-          <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="msg ai fragment fade-up"><table class="mini"><thead><tr><th>原句</th><th>問題</th><th>建議</th></tr></thead><tbody><tr><td>請盡快回覆</td><td>語氣太硬</td><td>方便的話，週五前回覆</td></tr></tbody></table></div>
-        </div>
+      <div class="a techwhy" style="--i:1">讓 AI 當第二雙眼睛，<b>抓自己看不到的問題</b><span class="fit">適合：重要信件・報告・履歷</span></div>
+      <div class="chatwin">
+        <div class="a msg user fromright" style="--i:2"><p>幫我檢查這封信的錯字、太硬的語氣、主管可能誤會的句子。<em>用表格列出：原句｜問題｜建議</em>。</p></div>
+        <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="msg ai fragment fade-up"><table class="mini"><thead><tr><th>原句</th><th>問題</th><th>建議</th></tr></thead><tbody><tr><td>請盡快回覆</td><td>語氣太硬</td><td>方便的話，週五前回覆</td></tr></tbody></table></div>
       </div></section>
 
 <!-- 23 flow -->
 <section><div class="chip ">老實說</div><h2>你現在看的這份簡報</h2>
-      <div class="flow" style="grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr 36px 1fr"><div class="card center amber fragment zoom-in" data-fragment-index="0"><div class="t">邀約文字</div><div class="d">活動資訊</div></div><div class="arrow fragment fade-right" data-fragment-index="1"><span>→</span></div><div class="card center teal fragment zoom-in" data-fragment-index="1"><div class="t">AI 排大綱</div><div class="d">27 頁架構</div></div><div class="arrow fragment fade-right" data-fragment-index="2"><span>→</span></div><div class="card center coral fragment zoom-in" data-fragment-index="2"><div class="t">我確認</div><div class="d">改方向</div></div><div class="arrow fragment fade-right" data-fragment-index="3"><span>→</span></div><div class="card center teal fragment zoom-in" data-fragment-index="3"><div class="t">AI 做成簡報</div><div class="d">查證工具資訊</div></div><div class="arrow fragment fade-right" data-fragment-index="4"><span>→</span></div><div class="card center coral fragment zoom-in" data-fragment-index="4"><div class="t">我檢查</div><div class="d">修正、試講</div></div></div>
+      <ol class="vflow"><li class="amber fragment fade-left"><span class="no">1</span><b>邀約文字</b><span class="dp">活動資訊</span></li><li class="teal fragment fade-left"><span class="no">2</span><b>AI 排大綱</b><span class="dp">27 頁架構</span></li><li class="coral fragment fade-left"><span class="no">3</span><b>我確認</b><span class="dp">改方向</span></li><li class="teal fragment fade-left"><span class="no">4</span><b>AI 做成簡報</b><span class="dp">查證工具資訊</span></li><li class="coral fragment fade-left"><span class="no">5</span><b>我檢查</b><span class="dp">修正、試講</span></li></ol>
       <div class="note big2 fragment fade-up">AI 做八成，<b>最後兩成是你的判斷</b></div></section>
 
 <!-- 24 quiz -->
 <section><div class="chip amber">聊天室互動</div><h2>哪個問法比較好？</h2>
-      <div class="grid g2 quiz">
+      <div class="quiz">
         <div class="a card opt fromleft " style="--i:1"><div class="lt">A</div><p>幫我規劃日本旅遊</p></div>
-        <div class="a card opt fromright win" style="--i:2"><div class="lt">B</div><p>幫我規劃 12 月東京 5 天自由行，兩個大人，喜歡逛街和美食，不想太趕，每天行程用表格列出</p></div>
+        <div class="a card opt fromleft win" style="--i:2"><div class="lt">B</div><p>幫我規劃 12 月東京 5 天自由行，兩個大人，喜歡逛街和美食，不想太趕，每天行程用表格列出</p></div>
       </div>
       <div class="note reveal-ans fragment zoom-in">答案是 <b>B</b>：B 有背景（誰去、何時、喜好）也有格式（表格），AI 不用猜</div></section>
 
@@ -1007,41 +1133,39 @@ html.static .caret { display: none; }
 
 <!-- 26 flips -->
 <section><div class="chip ">04　打造你的個人化 AI 助手</div><h2>什麼是個人化 AI 助手？</h2><p class="lead">設定一次，之後每次都記得</p>
-      <div class="grid g3 flipall fragment custom"><div class="a flip" style="--i:1"><div class="inner">
-        <div class="front card">每次都要重講<br>「我是誰」</div><div class="back card amber">寫進指示<br>一次搞定</div></div></div><div class="a flip" style="--i:2"><div class="inner">
-        <div class="front card">每次都要<br>重新上傳資料</div><div class="back card teal">放進專案<br>隨時引用</div></div></div><div class="a flip" style="--i:3"><div class="inner">
-        <div class="front card">回答格式<br>每次不一樣</div><div class="back card green">規定好格式<br>穩定輸出</div></div></div></div>
+      <div class="fliprows flipall fragment custom"><div class="a flip" style="--i:1"><div class="inner">
+        <div class="front card">每次都要重講「我是誰」</div><div class="back card amber">寫進指示，一次搞定</div></div></div><div class="a flip" style="--i:2"><div class="inner">
+        <div class="front card">每次都要重新上傳資料</div><div class="back card teal">放進專案，隨時引用</div></div></div><div class="a flip" style="--i:3"><div class="inner">
+        <div class="front card">回答格式每次不一樣</div><div class="back card green">規定好格式，穩定輸出</div></div></div></div>
       <p class="hint">按 → 一起翻面，點單張可以翻回</p></section>
 
 <!-- 27 compare -->
 <section><div class="chip ">04　打造你的個人化 AI 助手</div><h2>三家怎麼做？（免費版）</h2>
-      <table class="cmp"><thead><tr><th class="a " style="--i:1"></th><th class="a green" style="--i:2">ChatGPT</th><th class="a amber" style="--i:3">Claude</th><th class="a teal" style="--i:4">Gemini</th></tr></thead>
-      <tbody><tr class="a" style="--i:5"><th>叫什麼</th><td>專案</td><td>專案</td><td>技能（Skills）</td></tr><tr class="a" style="--i:6"><th>免費能做嗎</th><td>可以<br><small>最多放 5 個檔案</small></td><td>可以<br><small>最多 5 個專案</small></td><td>可以<br><small>分批開放中</small></td></tr><tr class="a" style="--i:7"><th>在哪裡</th><td>左側「新專案」</td><td>左側「專案」</td><td>設定 →「技能」</td></tr></tbody></table>
+      <div class="tools"><div class="tool green fragment fade-up"><div class="tn">ChatGPT<span class="tl2">位置：左側「新專案」</span></div>
+        <div class="tl1">叫「專案」・可以（最多放 5 個檔案）</div></div><div class="tool amber fragment fade-up"><div class="tn">Claude<span class="tl2">位置：左側「專案」</span></div>
+        <div class="tl1">叫「專案」・可以（最多 5 個專案）</div></div><div class="tool teal fragment fade-up"><div class="tn">Gemini<span class="tl2">位置：設定 →「技能」</span></div>
+        <div class="tl1">叫「技能（Skills）」・可以（分批開放中）</div></div></div>
       <div class="asof">2026 年 11 月查證</div><div class="note fragment fade-up">舊教學提醒：ChatGPT 的 <b>GPTs</b> 個人帳號已不能新建；Gemini 的 <b>Gems</b> 11/17 起轉成技能</div></section>
 
 <!-- 28 flow -->
 <section><div class="chip ">04　打造你的個人化 AI 助手</div><h2>做一個助手的四步</h2>
-      <div class="flow" style="grid-template-columns:1fr 36px 1fr 36px 1fr 36px 1fr"><div class="card center amber fragment zoom-in" data-fragment-index="0"><div class="t">定角色</div><div class="d">它要幫你做什麼</div></div><div class="arrow fragment fade-right" data-fragment-index="1"><span>→</span></div><div class="card center teal fragment zoom-in" data-fragment-index="1"><div class="t">寫指示</div><div class="d">你是誰、怎麼回答</div></div><div class="arrow fragment fade-right" data-fragment-index="2"><span>→</span></div><div class="card center green fragment zoom-in" data-fragment-index="2"><div class="t">放資料</div><div class="d">常用的參考檔</div></div><div class="arrow fragment fade-right" data-fragment-index="3"><span>→</span></div><div class="card center coral fragment zoom-in" data-fragment-index="3"><div class="t">測試修正</div><div class="d">不滿意就改指示</div></div></div>
+      <ol class="vflow"><li class="amber fragment fade-left"><span class="no">1</span><b>定角色</b><span class="dp">它要幫你做什麼</span></li><li class="teal fragment fade-left"><span class="no">2</span><b>寫指示</b><span class="dp">你是誰、怎麼回答</span></li><li class="green fragment fade-left"><span class="no">3</span><b>放資料</b><span class="dp">常用的參考檔</span></li><li class="coral fragment fade-left"><span class="no">4</span><b>測試修正</b><span class="dp">不滿意就改指示</span></li></ol>
       <div class="note big2 fragment fade-up">第一版不用完美，<b>用了再改</b></div></section>
 
 <!-- 29 prompt -->
 <section><div class="chip amber">可以直接抄</div><h2>指示範本</h2>
-      <div class="grid" style="grid-template-columns:1.35fr 1fr;align-items:start;gap:28px">
-        <div class="a promptbox shimmer" style="--i:1"><pre>你是我的【用途】助手。
-
+      <div class="a promptbox shimmer" style="--i:1"><pre>你是我的【用途】助手。
 關於我：【身分】，常遇到【情境】。
 你的任務：【要幫我做的事】。
-
 回答方式：
 - 繁體中文，口吻【親切／專業】
 - 先給結論，再列 3 點重點
 - 不確定的事要說不確定，不要自己編</pre></div>
-        <ul class="tips"><li class="fragment fade-up">【】換成你自己的內容</li><li class="fragment fade-up">先寫短的，用了再加</li><li class="fragment fade-up">「不要自己編」這句一定要留</li></ul>
-      </div></section>
+      <ul class="tips"><li class="fragment fade-up">【】換成你自己的內容</li><li class="fragment fade-up">先寫短的，用了再加</li><li class="fragment fade-up">「不要自己編」這句一定要留</li></ul></section>
 
 <!-- 30 demo -->
-<section><div class="chip amber">現場示範</div><h2 class="h2s">現場示範：ChatGPT 專案（免費帳號）</h2>
-      <ol class="timeline"><li class="fragment fade-up"><span class="tm">0′</span><b>開新專案</b><span class="dp">取名「通知信助手」</span></li><li class="fragment fade-up"><span class="tm">3′</span><b>貼上指示</b><span class="dp">用上一頁範本</span></li><li class="fragment fade-up"><span class="tm">6′</span><b>放一份資料</b><span class="dp">過去寫過的通知信</span></li><li class="fragment fade-up"><span class="tm">9′</span><b>用聊天室的小事測試</b><span class="dp">看回答哪裡不對</span></li><li class="fragment fade-up"><span class="tm">15′</span><b>改指示再試一次</b><span class="dp">比較前後差別</span></li></ol>
+<section><div class="chip amber">ChatGPT 專案（免費帳號）</div><h2>現場示範</h2>
+      <ol class="timeline"><li class="fragment fade-up"><span class="tm">0′</span><div><b>開新專案</b><span class="dp">取名「通知信助手」</span></div></li><li class="fragment fade-up"><span class="tm">3′</span><div><b>貼上指示</b><span class="dp">用上一頁範本</span></div></li><li class="fragment fade-up"><span class="tm">6′</span><div><b>放一份資料</b><span class="dp">過去寫過的通知信</span></div></li><li class="fragment fade-up"><span class="tm">9′</span><div><b>用聊天室的小事測試</b><span class="dp">看回答哪裡不對</span></div></li><li class="fragment fade-up"><span class="tm">15′</span><div><b>改指示再試一次</b><span class="dp">比較前後差別</span></div></li></ol>
       <div class="a note" style="--i:3">用免費帳號示範，你看到的畫面跟回家操作的一樣</div></section>
 
 <!-- 31 faq -->
@@ -1050,7 +1174,7 @@ html.static .caret { display: none; }
 
 <!-- 32 versus -->
 <section><div class="chip ">04　打造你的個人化 AI 助手</div><h2>至少要有一個付費工具</h2><p class="lead">免費版適合入門，付費版用來省時間</p>
-      <div class="grid g2 vs">
+      <div class="vs">
         <div class="a card vfree fromleft" style="--i:1"><div class="vh">免費版</div><ul><li>用量有上限，用到一半可能被限制</li><li>用的是比較輕量的模型</li><li>深度研究、讀大量檔案的次數少</li></ul></div>
         <div class="card vpaid fragment fade-left"><div class="vh">付費版（主流約每月 20 美元）</div><ul><li>用量多好幾倍，工作不會卡住</li><li>用更強的模型，複雜任務一次到位</li><li>專案可以放更多參考檔案</li></ul></div>
       </div><div class="note fragment fade-up">建議：免費版試兩週找出主力 → <b>只付費那一個</b>，其他維持免費</div></section>
@@ -1061,12 +1185,11 @@ html.static .caret { display: none; }
         <div class="ctrls">
           <label class="a ctl" style="--i:1"><span>每週省下</span><b class="hv">2</b><span>小時</span>
             <input class="cs h" type="range" min="0.5" max="5" step="0.5" value="2" aria-label="每週省下小時"></label>
-          <label class="a ctl" style="--i:2"><span>你的一小時值</span><b class="rv">400</b><span>元</span>
+          <label class="a ctl" style="--i:2"><span>一小時值</span><b class="rv">400</b><span>元</span>
             <input class="cs r" type="range" min="200" max="1500" step="50" value="400" aria-label="一小時值多少元"></label>
         </div>
         <div class="a res pop" style="--i:3">
-          <div class="rl">每月省下</div>
-          <div class="rbig"><span class="mh">8</span> 小時 ≈ <span class="mv">NT$ 3,200</span></div>
+          <div class="rbig">每月省下 <span class="mh">8</span> 小時 ≈ <span class="mv">NT$ 3,200</span></div>
           <div class="rc">付費約 <b>NT$ 650</b>／月　<span class="verdict ok">已經回本</span></div>
         </div>
       </div>
@@ -1078,11 +1201,9 @@ html.static .caret { display: none; }
 
 <!-- 35 end -->
 <section data-background-gradient="radial-gradient(circle at 88% 12%, rgba(63,193,183,0.30), rgba(242,184,75,0.08) 35%, #0B1F2A 62%)" class="cover end">
-      <div style="display:flex;align-items:center;gap:60px;">
-        <div style="flex:1"><h1 class="stagger">謝謝收看</h1><p class="a coversub" style="--i:5">先找到一件想解決的小事，<br>讓 AI 成為你用得上的幫手</p><p class="a who" style="--i:7">Rex｜閱讀星世界｜AI 新手入門</p></div>
-        <div class="qrcard a pop" style="--i:4" data-url="https://1123junlin.com"><svg class="qrsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h27v27H0z"/><path stroke="#0B1F2A" d="M1 1.5h7m2 0h5m2 0h1m1 0h7M1 2.5h1m5 0h1m2 0h2m2 0h4m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h4m3 0h1m2 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h4m4 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m1 0h1m1 0h3m2 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h4m3 0h2M1 9.5h1m1 0h5m6 0h2m3 0h5M2 10.5h2m1 0h2m2 0h5m3 0h2m5 0h1M2 11.5h2m3 0h3m3 0h2m1 0h1m2 0h2m1 0h1m1 0h2M1 12.5h2m5 0h1m1 0h1m2 0h1m1 0h1m1 0h3m5 0h1M2 13.5h1m1 0h2m1 0h3m4 0h2m3 0h3m1 0h3M1 14.5h4m1 0h1m6 0h2m2 0h2m3 0h1m1 0h1M1 15.5h1m1 0h6m2 0h1m2 0h4m1 0h4m1 0h2M1 16.5h1m3 0h2m2 0h1m1 0h1m1 0h1m1 0h3m2 0h2m3 0h1M1 17.5h1m1 0h1m1 0h5m1 0h1m1 0h9m1 0h1M9 18.5h3m2 0h1m2 0h1m3 0h2M1 19.5h7m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3M1 20.5h1m5 0h1m1 0h1m1 0h2m2 0h1m1 0h1m3 0h2M1 21.5h1m1 0h3m1 0h1m1 0h1m2 0h1m3 0h6m1 0h3M1 22.5h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h2m1 0h1m1 0h5M1 23.5h1m1 0h3m1 0h1m1 0h2m3 0h5m3 0h2m1 0h1M1 24.5h1m5 0h1m2 0h2m1 0h2m1 0h2m1 0h4m2 0h1M1 25.5h7m1 0h3m1 0h1m1 0h1m2 0h1m1 0h6"/></svg>
-<div class="qrl">1123junlin.com</div></div>
-      </div></section>
+      <h1 class="stagger">謝謝收看</h1><p class="a coversub" style="--i:5">先找到一件想解決的小事，<br>讓 AI 成為你用得上的幫手</p>
+      <div class="endrow"><p class="a who" style="--i:7">Rex<br>閱讀星世界｜AI 新手入門</p><div class="qrcard a pop" style="--i:4" data-url="https://1123junlin.com"><svg class="qrsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27" shape-rendering="crispEdges"><path fill="#FFFFFF" d="M0 0h27v27H0z"/><path stroke="#0B1F2A" d="M1 1.5h7m2 0h5m2 0h1m1 0h7M1 2.5h1m5 0h1m2 0h2m2 0h4m1 0h1m5 0h1M1 3.5h1m1 0h3m1 0h1m1 0h4m3 0h1m2 0h1m1 0h3m1 0h1M1 4.5h1m1 0h3m1 0h1m1 0h1m1 0h4m4 0h1m1 0h3m1 0h1M1 5.5h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m1 0h1M1 6.5h1m5 0h1m1 0h2m1 0h1m1 0h3m2 0h1m5 0h1M1 7.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M9 8.5h4m3 0h2M1 9.5h1m1 0h5m6 0h2m3 0h5M2 10.5h2m1 0h2m2 0h5m3 0h2m5 0h1M2 11.5h2m3 0h3m3 0h2m1 0h1m2 0h2m1 0h1m1 0h2M1 12.5h2m5 0h1m1 0h1m2 0h1m1 0h1m1 0h3m5 0h1M2 13.5h1m1 0h2m1 0h3m4 0h2m3 0h3m1 0h3M1 14.5h4m1 0h1m6 0h2m2 0h2m3 0h1m1 0h1M1 15.5h1m1 0h6m2 0h1m2 0h4m1 0h4m1 0h2M1 16.5h1m3 0h2m2 0h1m1 0h1m1 0h1m1 0h3m2 0h2m3 0h1M1 17.5h1m1 0h1m1 0h5m1 0h1m1 0h9m1 0h1M9 18.5h3m2 0h1m2 0h1m3 0h2M1 19.5h7m2 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3M1 20.5h1m5 0h1m1 0h1m1 0h2m2 0h1m1 0h1m3 0h2M1 21.5h1m1 0h3m1 0h1m1 0h1m2 0h1m3 0h6m1 0h3M1 22.5h1m1 0h3m1 0h1m1 0h3m1 0h2m1 0h2m1 0h1m1 0h5M1 23.5h1m1 0h3m1 0h1m1 0h2m3 0h5m3 0h2m1 0h1M1 24.5h1m5 0h1m2 0h2m1 0h2m1 0h2m1 0h4m2 0h1M1 25.5h7m1 0h3m1 0h1m1 0h1m2 0h1m1 0h6"/></svg>
+<div class="qrl">1123junlin.com</div></div></div></section>
 </div></div>
 <script>/*!
  * reveal.js 5.2.0
