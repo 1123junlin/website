@@ -238,7 +238,8 @@ ICONS = {
 # ---------- 首頁 ----------
 def post_card(p):
     img = p.get("featured_image", "").replace("https://1123junlin.com/wp-content/uploads/", "/images/") or first_img(p["body"])
-    ph = (f'<div class="ph"><img src="{img}" alt="" loading="lazy" decoding="async"></div>' if img
+    fit = ' style="object-fit:contain"' if p.get("cover_fit") == "contain" else ""
+    ph = (f'<div class="ph"><img src="{img}" alt=""{fit} loading="lazy" decoding="async"></div>' if img
           else f'<div class="ph noimg">{esc(p.get("category",""))}</div>')
     return f'<a class="card" href="{p["path"]}">{ph}<span class="d">{zh_date(p["d"])}</span><h3>{esc(p["title"])}</h3></a>'
 
