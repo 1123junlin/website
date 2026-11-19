@@ -30,6 +30,10 @@ NAV = [("關於我", "/about/"), ("服務", "/services/"), ("作品", "/portfoli
        ("常見問題", "/faq/"), ("聯絡", "/#contact")]
 PAGE_ORDER = ["about", "services", "portfolio", "activities", "interview", "faq"]
 PORTRAIT = "/images/2026/07/20260711-ljl.png"
+# 文章改網址時，舊網址自動轉到新網址
+REDIRECTS = {
+    "/2026/11/19/ai-daily-operations-dr-hao-november-2026/": "/2026/11/18/ai-daily-operations-dr-hao-november-2026/",
+}
 FONTS = "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap"
 CSS = re.sub(r"/\*.*?\*/|\s*\n\s*", "", (ROOT / "assets" / "style.css").read_text(encoding="utf-8"), flags=re.S)
 
@@ -579,6 +583,13 @@ def extras():
             "## 頁面"] + [f"- [{pages[s]['title']}]({SITE}{pages[s]['path']})" for s in PAGE_ORDER] + \
            ["", "## 文章"] + [f"- [{p['title']}]({SITE}{p['path']})：{p.get('description','')}" for p in posts]
     (OUT / "llms.txt").write_text("\n".join(llms) + "\n", encoding="utf-8")
+    for old_path, new_path in REDIRECTS.items():
+        f = OUT / old_path.strip("/") / "index.html"
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(f'<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><title>頁面已搬移</title>'
+                     f'<link rel="canonical" href="{SITE}{new_path}"><meta name="robots" content="noindex">'
+                     f'<meta http-equiv="refresh" content="0; url={new_path}"></head>'
+                     f'<body><p>這篇文章已搬到 <a href="{new_path}">{SITE}{new_path}</a></p></body></html>', encoding="utf-8")
     (OUT / "CNAME").write_text("1123junlin.com\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUT / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#3F7A9B"/><text x="32" y="43" text-anchor="middle" font-family="serif" font-size="30" fill="#fff">俊</text></svg>', encoding="utf-8")

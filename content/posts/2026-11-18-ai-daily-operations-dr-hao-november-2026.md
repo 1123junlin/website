@@ -1,9 +1,9 @@
 ---
 title: 白袍人生學院 11 月主題月講座心得：讓 AI 進入公司的日常，先想清楚要解決什麼問題
 slug: ai-daily-operations-dr-hao-november-2026
-date: 2026-11-19T17:00:00+08:00
+date: 2026-11-18T23:30:00+08:00
 category: 活動記錄
-url: https://1123junlin.com/2026/11/19/ai-daily-operations-dr-hao-november-2026/
+url: https://1123junlin.com/2026/11/18/ai-daily-operations-dr-hao-november-2026/
 featured_image: /images/2026/11/1118-ai-daily-operations-cover.jpg
 cover_fit: contain
 description: 參加白袍人生學院 11 月主題月線上講座「讓 AI 進入公司的日常」的心得：以終為始先把問題說清楚，用流程圖讓 AI 拆工作流、一路做到 L11，並先做資安分級、從一張試算表建立知識庫，再讓 AI 自己檢驗自己。
@@ -60,7 +60,21 @@ Summer 老師看過四、五百位醫師學員，最常聽到的需求有五個�
 5. 檢查 AI 選的工具，它有時會亂推薦，要記得更正。
 6. 請 AI 列出缺口清單，補完缺口，AI 的能力就跟著變強。
 
+<div class="slide-scroll"><a href="/images/2026/11/1118-slide-iso5807-symbols.jpg" target="_blank" rel="noopener"><img src="/images/2026/11/1118-slide-iso5807-symbols.jpg" alt="ISO 5807 流程圖符號：起訖、處理、判斷、文件、人工作業、既定處理、資料庫、退回"></a></div>
+<p class="scroll-hint">左右滑動看完整畫面，點圖可放大</p>
+
+*ISO 5807 流程圖符號：國際標準、分工一眼看清、AI 照圖執行（圖片來源：Summer 老師講座簡報）*
+
+<div class="slide-scroll"><a href="/images/2026/11/1118-slide-workflow-swimlane.jpg" target="_blank" rel="noopener"><img src="/images/2026/11/1118-slide-workflow-swimlane.jpg" alt="一個衛教主題變成一條營運工作流的泳道流程圖，分為院長、Claude、外部工具、資料庫四條泳道"></a></div>
+<p class="scroll-hint">左右滑動看完整畫面，點圖可放大</p>
+
+*示範：一個衛教主題，變成一條營運工作流（圖片來源：Summer 老師講座簡報）*
+
 Summer 老師提醒，流程圖裡有五件事一定要親自看：流程圖本身（流程錯了後面全錯）、步驟、工具、每一步的產出，以及「人的節點」。重整流程一定會動到同事的工作，要知道人放在哪裡。
+
+[![檢視重點：流程圖、步驟、工具、產出品、人的節點](/images/2026/11/1118-slide-review-points.jpg)](/images/2026/11/1118-slide-review-points.jpg)
+
+*一定要親自看的五件事（圖片來源：Summer 老師講座簡報）*
 
 示範案例中，第一版原本 11 個步驟都要院長介入，跟 AI 討論之後，最後只剩 3 個人的節點。
 
@@ -74,7 +88,14 @@ Summer 老師提醒，流程圖裡有五件事一定要親自看：流程圖本�
 
 > AI 做到一半停下來，通常是因為它沒有目標階段。——Summer 老師
 
-流程圖核對完後，直接跟 AI 說「從 L0 做到 L11 為止」。AI 知道終點在哪，就不會每做一步就問「這樣可以嗎？」。示範中的步驟如下：
+流程圖核對完後，直接跟 AI 說「從 L0 做到 L11 為止」。AI 知道終點在哪，就不會每做一步就問「這樣可以嗎？」。
+
+<div class="slide-scroll"><a href="/images/2026/11/1118-slide-l0-l11.jpg" target="_blank" rel="noopener"><img src="/images/2026/11/1118-slide-l0-l11.jpg" alt="讓 AI 真正自動執行下去：L0 到 L11 的階梯圖，紅色是人的節點"></a></div>
+<p class="scroll-hint">左右滑動看完整畫面，點圖可放大</p>
+
+*讓 AI 真正自動執行下去：L0–L11，紅色是人的節點（圖片來源：Summer 老師講座簡報）*
+
+示範中的步驟如下：
 
 | 步驟 | 內容 | 誰做 |
 |---|---|---|
@@ -92,6 +113,11 @@ Summer 老師提醒，流程圖裡有五件事一定要親自看：流程圖本�
 
 用 AI 之前最重要的事，是先把資料分級：
 
+<div class="slide-scroll"><a href="/images/2026/11/1118-slide-data-security.jpg" target="_blank" rel="noopener"><img src="/images/2026/11/1118-slide-data-security.jpg" alt="第一道防線：資料先分級再選 AI，綠燈可直接用、黃燈先處理再用、紅燈不可外送"></a></div>
+<p class="scroll-hint">左右滑動看完整畫面，點圖可放大</p>
+
+*第一道防線：資料先分級再選 AI（圖片來源：Summer 老師講座簡報）*
+
 | 分級 | 怎麼處理 | 例子 |
 |---|---|---|
 | 綠燈 | 可以直接給 AI | 公開商品型錄、官網與已發布貼文、公開的操作說明 |
@@ -108,6 +134,10 @@ Summer 老師提醒，流程圖裡有五件事一定要親自看：流程圖本�
 
 病患的問題常常在下班後出現。示範中，AI 協助完成 LINE 機器人的帳號申請、圖文選單和知識庫串接，除了「同意授權」之外都由 AI 處理，約 3 小時完成。
 
+[![連 LINE 的設定都能交給 AI 建立：圖文選單、關鍵字自動回覆、知識庫問答、轉接真人規則](/images/2026/11/1118-slide-line-setup.jpg)](/images/2026/11/1118-slide-line-setup.jpg)
+
+*連 LINE 的設定都能交給 AI：圖文選單、關鍵字自動回覆、知識庫問答、轉接真人規則（圖片來源：Summer 老師講座簡報）*
+
 知識庫最簡單的起點，就是一張 Google 試算表。把 LINE、FB 等所有來源的問答累積下來，欄位重點是「啟用」和「官方答案」：不適合 AI 回答的題目就把「啟用」關掉，轉給真人。講者特別提醒三類問題一定要轉真人：醫療判斷、金錢與商業、會變動的資訊（例如國定假日有沒有看診）。
 
 我很喜歡 Summer 老師說的「教 AI 做人」：先肯定、再給答案；不指責；別人分享要先道謝。
@@ -122,6 +152,14 @@ AI 自評看不出自己的盲點，就像人也看不見自己的缺點。講�
 2. 找不同的 AI 一起評鑑。
 3. 軍事兵棋推演：紅隊攻擊、藍隊防守、白隊裁判，適合找錯與把關。
 4. 六頂思考帽：白帽事實、紅帽直覺、黑帽風險、黃帽價值、綠帽新點子、藍帽總結，適合決策與發想。
+
+[![軍事兵棋推演：紅隊、藍隊、白隊、紫隊、黃隊、橙隊、綠隊的分工](/images/2026/11/1118-slide-war-game-teams.jpg)](/images/2026/11/1118-slide-war-game-teams.jpg)
+
+*軍事兵棋推演：七種顏色的分工（圖片來源：Summer 老師講座簡報）*
+
+[![六頂思考帽：白帽事實、紅帽直覺、黑帽風險、黃帽價值、綠帽新點子、藍帽總結](/images/2026/11/1118-slide-six-thinking-hats.jpg)](/images/2026/11/1118-slide-six-thinking-hats.jpg)
+
+*六頂思考帽：Edward de Bono 於 1985 年提出的平行思考法（圖片來源：Summer 老師講座簡報）*
 
 這套很耗 token，Summer 老師建議依案子大小和重要性決定，最常用在流程圖討論完的時候，因為流程錯了，後面全錯。
 

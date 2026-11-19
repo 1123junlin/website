@@ -285,3 +285,11 @@ a:hover{color:var(--sora)}
 /* 防止任何內容撐寬手機畫面 */
 .prose img,.prose iframe{max-width:100%}
 .wide .prose>p>a>img,.wide .prose>p>img{max-width:min(640px,100%)}
+/* 文章內較密的簡報畫面：手機上放大並可左右滑動 */
+.slide-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.6em 0 .4em;border-radius:12px}
+.prose .slide-scroll img{margin:0}
+.scroll-hint{display:none}
+@media (max-width:600px){
+  .prose .slide-scroll img{width:700px;max-width:none}
+  .prose .scroll-hint{display:block;font-size:13px;color:var(--sub);margin:.4em 0 0}
+}
