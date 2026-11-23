@@ -15,6 +15,8 @@ updated: 2026-10-15
 
 2026.07.03
 
+完整訪談：[SalesWhat #023 華書慈善基金會執行長－譚雅云](https://www.youtube.com/watch?v=BcCUw3lOWVs)
+
 ## [白袍人生學院](../posts/2026-06-27-dr-hao-summit-2026.md)
 
 ![賴俊燐參與白袍人生學院2026高峰年會，2026年6月27日](/images/2026/07/0627-blog.jpg)

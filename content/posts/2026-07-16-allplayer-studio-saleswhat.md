@@ -61,6 +61,10 @@ description: 專訪 AllPlayer Studio 李富城主播後最深的體會是：真�
 
 [YouTube 影片](https://www.youtube.com/watch?v=z3kY63jH2gY)
 
+完整訪談收錄在 AllPlayer Studio 的 SalesWhat #025：
+
+[[SalesWhat] #025 氣象權威－李富城](https://www.youtube.com/watch?v=BMgLp5gbr70)
+
 ## 真正值得學習的，不只是氣象，而是人生態度
 
 訪談結束後，我心裡一直很感動。

@@ -465,9 +465,9 @@ def portfolio_page():
 EPISODES = [
     ("#027", "超人氣新媒體執行長、開開 KaiKai 創辦人－王奕傑", "ghA6fgagJ-w"),
     ("#026", "筑今數位設計創辦人－游思潔 Jacy", "lpTH51mgbzg"),
-    ("#025", "氣象權威－李富城", "BMgLp5gbr70"),
+    ("#025", "氣象權威－李富城", "BMgLp5gbr70", ("閱讀專訪心得", "/2026/07/16/allplayer-studio-saleswhat/")),
     ("#024", "寵秘生技&食亨董事長－蕭毓君", "YeDpXmgTSPg"),
-    ("#023", "華書慈善基金會執行長&跨領域教育實踐者－譚雅云", "BcCUw3lOWVs"),
+    ("#023", "華書慈善基金會執行長&跨領域教育實踐者－譚雅云", "BcCUw3lOWVs", ("看活動足跡", "/activities/")),
     ("#022", "HOOTERS TAIWAN二代&老撈麻辣鍋共同創辦人－劉昶志", "uPSdFcxzD5o"),
     ("#021", "長穩社福慈善基金會執行長－Sigrid", "AqU385sOvrM"),
     ("#020", "嗜甜咖啡烘焙所負責人－林哲正", "k1x-zkzudY8"),
@@ -478,12 +478,11 @@ EPISODES = [
 def interview_page():
     links = [("官網", "https://www.allplayerstudio.com/"), ("Facebook", "https://www.facebook.com/AllPlayerStudio/"),
              ("Instagram", "https://www.instagram.com/allplayer_studio/")]
-    def ep(n, g, v):
-        if not g:
-            return f'<figure class="ep">{yt(v, "AllPlayer Studio 訪談影片", short=False)}</figure>'
+    def ep(n, g, v, rel=None):
+        more = f'<a class="ep-rel" href="{rel[1]}">{rel[0]}</a>' if rel else ""
         return (f'<figure class="ep">{yt(v, f"[SalesWhat] {n} {g}", short=False)}'
-                f'<figcaption><span class="ep-no">SalesWhat {n}</span><strong>{esc(g)}</strong></figcaption></figure>')
-    eps = "".join(ep(n, g, v) for n, g, v in EPISODES)
+                f'<figcaption><span class="ep-no">SalesWhat {n}</span><strong>{esc(g)}</strong>{more}</figcaption></figure>')
+    eps = "".join(ep(*e) for e in EPISODES)
     body = f"""<div class="wrap">
 <header class="page-head"><h1>訪談</h1></header>
 <section class="show">

@@ -314,3 +314,4 @@ a:hover{color:var(--sora)}
   .show-logo{width:72px;height:72px}
   .eps{grid-template-columns:1fr;gap:28px}
 }
+.ep-rel{display:block;margin-top:4px;font-size:14px}
