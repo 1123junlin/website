@@ -460,6 +460,40 @@ def portfolio_page():
 <div class="works">{"".join(sections)}</div></div>"""
     write("/portfolio/", layout("作品", "賴俊燐（JunLin）的作品：AI 工具、AI 作圖海報、短影音剪輯、AI 自動影音剪輯、ITI4 網站建置與 Claude 串 GitHub 投票系統。", body, "/portfolio/"))
 
+
+# ---------- 訪談頁 ----------
+EPISODES = [
+    ("#022", "HOOTERS TAIWAN二代&老撈麻辣鍋共同創辦人－劉昶志", "uPSdFcxzD5o"),
+    ("#021", "長穩社福慈善基金會執行長－Sigrid", "AqU385sOvrM"),
+    ("#020", "嗜甜咖啡烘焙所負責人－林哲正", "k1x-zkzudY8"),
+    ("#019", "調色師 feat. 視覺藝術家－PAUL HANRAHAN 安保羅", "r4GcCkddxCA"),
+    ("#018", "知覺優格創辦人－蕭子翔", "UHC4IbZKYEM"),
+]
+
+def interview_page():
+    links = [("官網", "https://www.allplayerstudio.com/"), ("Facebook", "https://www.facebook.com/AllPlayerStudio/"),
+             ("Instagram", "https://www.instagram.com/allplayer_studio/")]
+    eps = "".join(
+        f'<figure class="ep">{yt(v, f"[SalesWhat] {n} {g}", short=False)}'
+        f'<figcaption><span class="ep-no">SalesWhat {n}</span><strong>{esc(g)}</strong></figcaption></figure>'
+        for n, g, v in EPISODES)
+    body = f"""<div class="wrap">
+<header class="page-head"><h1>訪談</h1></header>
+<section class="show">
+  <img class="show-logo" src="/images/2026/07/allplayer_studio-logo.jpg" alt="AllPlayer Studio 品牌標誌">
+  <div class="show-info">
+    <h2>AllPlayer Studio 品牌主持</h2>
+    <p>擔任 AllPlayer Studio 品牌主持，在 SalesWhat 訪談節目中與各領域經營者對談。</p>
+    <ul class="show-links">{"".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u in links)}</ul>
+  </div>
+</section>
+<section class="eps-sec">
+  <h2 class="eps-h">SalesWhat 訪談節目</h2>
+  <div class="eps">{eps}</div>
+</section>
+</div>"""
+    write("/interview/", layout("訪談", "賴俊燐（JunLin）擔任 AllPlayer Studio 品牌主持的 SalesWhat 訪談節目，與餐飲、社福、咖啡、藝術與品牌創辦人對談。", body, "/interview/"))
+
 # ---------- 文章 ----------
 def faq_pairs(text):
     """從文章的「常見問題」段落取出問答，給 FAQPage 結構化資料用。"""
@@ -608,6 +642,7 @@ if __name__ == "__main__":
         page(s)
     services_page()
     portfolio_page()
+    interview_page()
     blog()
     for p in posts:
         post(p)

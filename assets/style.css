@@ -293,3 +293,24 @@ a:hover{color:var(--sora)}
   .prose .slide-scroll img{width:700px;max-width:none}
   .prose .scroll-hint{display:block;font-size:13px;color:var(--sub);margin:.4em 0 0}
 }
+/* 訪談頁 */
+.show{display:flex;align-items:center;gap:28px;padding:28px 32px;background:var(--surface);border:1px solid var(--line);border-radius:16px;margin:8px 0 56px}
+.show-logo{width:96px;height:96px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line)}
+.show-info h2{font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);margin:0 0 6px;letter-spacing:.04em}
+.show-info p{margin:0 0 14px;color:var(--sub);font-size:16px}
+.show-links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.show-links a{display:inline-block;padding:6px 16px;border:1px solid var(--sora);border-radius:999px;font-size:14px;text-decoration:none;color:var(--sora-deep)}
+.show-links a:hover{background:var(--mist)}
+.eps-sec{border-top:1px solid var(--ink);padding:36px 0 96px}
+.eps-h{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);margin:0 0 28px;letter-spacing:.06em}
+.eps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px}
+.ep{margin:0}
+.ep .video{border-radius:12px}
+.ep figcaption{margin-top:12px;line-height:1.6}
+.ep-no{display:block;font-size:13px;color:var(--wakatake);letter-spacing:.06em}
+.ep strong{font-weight:500;font-size:17px}
+@media (max-width:700px){
+  .show{flex-direction:column;align-items:flex-start;gap:16px;padding:22px}
+  .show-logo{width:72px;height:72px}
+  .eps{grid-template-columns:1fr;gap:28px}
+}
