@@ -468,15 +468,23 @@ EPISODES = [
     ("#020", "嗜甜咖啡烘焙所負責人－林哲正", "k1x-zkzudY8"),
     ("#019", "調色師 feat. 視覺藝術家－PAUL HANRAHAN 安保羅", "r4GcCkddxCA"),
     ("#018", "知覺優格創辦人－蕭子翔", "UHC4IbZKYEM"),
+    # 以下 5 支標題待補
+    ("", "", "BcCUw3lOWVs"),
+    ("", "", "YeDpXmgTSPg"),
+    ("", "", "BMgLp5gbr70"),
+    ("", "", "lpTH51mgbzg"),
+    ("", "", "ghA6fgagJ-w"),
 ]
 
 def interview_page():
     links = [("官網", "https://www.allplayerstudio.com/"), ("Facebook", "https://www.facebook.com/AllPlayerStudio/"),
              ("Instagram", "https://www.instagram.com/allplayer_studio/")]
-    eps = "".join(
-        f'<figure class="ep">{yt(v, f"[SalesWhat] {n} {g}", short=False)}'
-        f'<figcaption><span class="ep-no">SalesWhat {n}</span><strong>{esc(g)}</strong></figcaption></figure>'
-        for n, g, v in EPISODES)
+    def ep(n, g, v):
+        if not g:
+            return f'<figure class="ep">{yt(v, "AllPlayer Studio 訪談影片", short=False)}</figure>'
+        return (f'<figure class="ep">{yt(v, f"[SalesWhat] {n} {g}", short=False)}'
+                f'<figcaption><span class="ep-no">SalesWhat {n}</span><strong>{esc(g)}</strong></figcaption></figure>')
+    eps = "".join(ep(n, g, v) for n, g, v in EPISODES)
     body = f"""<div class="wrap">
 <header class="page-head"><h1>訪談</h1></header>
 <section class="show">
