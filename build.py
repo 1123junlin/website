@@ -26,13 +26,14 @@ SOCIAL = [
     ("ORCID", "https://orcid.org/0009-0005-0464-6276"),
 ]
 NAV = [("關於我", "/about/"), ("服務", "/services/"), ("作品", "/portfolio/"),
-       ("活動足跡", "/activities/"), ("訪談", "/interview/"), ("文章", "/blog/"),
+       ("訪談", "/interview/"), ("文章", "/blog/"),
        ("常見問題", "/faq/"), ("聯絡", "/#contact")]
-PAGE_ORDER = ["about", "services", "portfolio", "activities", "interview", "faq"]
+PAGE_ORDER = ["about", "services", "portfolio", "interview", "faq"]
 PORTRAIT = "/images/2026/07/20260711-ljl.png"
 # 文章改網址時，舊網址自動轉到新網址
 REDIRECTS = {
     "/2026/11/19/ai-daily-operations-dr-hao-november-2026/": "/2026/11/18/ai-daily-operations-dr-hao-november-2026/",
+    "/activities/": "/",
 }
 FONTS = "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap"
 CSS = re.sub(r"/\*.*?\*/|\s*\n\s*", "", (ROOT / "assets" / "style.css").read_text(encoding="utf-8"), flags=re.S)
@@ -260,8 +261,8 @@ def home():
         ("2026.09.05", "來日方腸醫學研討會", "從篝火計畫 09 聚走到台南的跨界學習", "/2026/09/06/campfire-09-colorectal-health-2026/"),
         ("2026.07.03", "AllPlayer Studio", "訪談華書基金會執行長", "/interview/"),
         ("2026.06.27", "白袍人生學院 2026 高峰年會", "共學共好的醫師社群年會", "/2026/06/27/dr-hao-summit-2026/"),
-        ("2026.06.26", "AI 課程教學", "強化服務業人才韌性計畫：AI 新品需求預測與上市策略", "/activities/"),
-        ("2026.05.09", "大專生涯發展協會", "2026 志工大會", "/activities/"),
+        ("2026.06.26", "AI 課程教學", "強化服務業人才韌性計畫：AI 新品需求預測與上市策略", None),
+        ("2026.05.09", "大專生涯發展協會", "2026 志工大會", None),
     ]
     interviews = [
         ("#022", "HOOTERS TAIWAN二代&老撈麻辣鍋共同創辦人-劉昶志"),
@@ -303,8 +304,8 @@ def home():
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="sec-head"><div><h2>活動足跡</h2><p>參與、主持與服務過的課程和活動。</p></div><a class="more" href="/activities/">全部活動</a></div>
-  <ol class="timeline">{"".join(f'<li><time>{d}</time><div><h3><a href="{u}">{esc(t)}</a></h3><p>{esc(s)}</p></div></li>' for d,t,s,u in timeline)}</ol>
+  <div class="sec-head"><div><h2>活動足跡</h2><p>參與、主持與服務過的課程和活動。</p></div></div>
+  <ol class="timeline">{"".join(f'<li><time>{d}</time><div><h3>{f'<a href="{u}">{esc(t)}</a>' if u else esc(t)}</h3><p>{esc(s)}</p></div></li>' for d,t,s,u in timeline)}</ol>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -335,7 +336,7 @@ def home():
 # ---------- 一般頁面 ----------
 SERVICES = [
     ("分享", "Share", "分享知識，啟發更多可能", "透過演講、授課、訪談，分享創業觀點與 AI 應用。", "/images/2026/07/service-01.png",
-     [("明志科大「強化服務業人才韌性計畫」AI 課程", "/activities/"),
+     [("明志科大「強化服務業人才韌性計畫」AI 課程", None),
       ("AllPlayer Studio 品牌主持，SalesWhat 訪談節目", "/interview/"),
       ("TEDxRenaiRoad 2026 工作人員", "/2026/09/12/tedx-renairoad-2026-volunteer-reflection/")]),
     ("建構", "Build", "落地真正能解決問題的 AI", "依需求開發 AI、自動化流程，提升團隊效率。", "/images/2026/07/service-02-3.png",
@@ -356,7 +357,7 @@ def services_page():
     rows = []
     for t, en, tag, d, icon, refs in SERVICES:
         links = "".join(
-            f'<li><a href="{u}"{" target=_blank rel=noopener" if u.startswith("http") else ""}>{esc(n)}</a></li>' for n, u in refs)
+            (f'<li><a href="{u}"{" target=_blank rel=noopener" if u.startswith("http") else ""}>{esc(n)}</a></li>' if u else f'<li>{esc(n)}</li>') for n, u in refs)
         rows.append(f"""<section class="svc">
   <div class="svc-mark"><span class="ico">{ICONS[icon]}</span><p class="svc-name">{t}<span>{en}</span></p></div>
   <div class="svc-body"><h2>{tag}</h2><p>{d}</p></div>
@@ -466,7 +467,7 @@ EPISODES = [
     ("#026", "筑今數位設計創辦人－游思潔 Jacy", "lpTH51mgbzg"),
     ("#025", "氣象權威－李富城", "BMgLp5gbr70", ("閱讀專訪心得", "/2026/07/16/allplayer-studio-saleswhat/")),
     ("#024", "寵秘生技&食亨董事長－蕭毓君", "YeDpXmgTSPg"),
-    ("#023", "華書慈善基金會執行長&跨領域教育實踐者－譚雅云", "BcCUw3lOWVs", ("看活動足跡", "/activities/")),
+    ("#023", "華書慈善基金會執行長&跨領域教育實踐者－譚雅云", "BcCUw3lOWVs"),
     ("#022", "HOOTERS TAIWAN二代&老撈麻辣鍋共同創辦人－劉昶志", "uPSdFcxzD5o"),
     ("#021", "長穩社福慈善基金會執行長－Sigrid", "AqU385sOvrM"),
     ("#020", "嗜甜咖啡烘焙所負責人－林哲正", "k1x-zkzudY8"),
@@ -628,7 +629,7 @@ def extras():
         f.write_text(f'<!doctype html><html lang="zh-Hant-TW"><head><meta charset="utf-8"><title>頁面已搬移</title>'
                      f'<link rel="canonical" href="{SITE}{new_path}"><meta name="robots" content="noindex">'
                      f'<meta http-equiv="refresh" content="0; url={new_path}"></head>'
-                     f'<body><p>這篇文章已搬到 <a href="{new_path}">{SITE}{new_path}</a></p></body></html>', encoding="utf-8")
+                     f'<body><p>這個頁面已搬到 <a href="{new_path}">{SITE}{new_path}</a></p></body></html>', encoding="utf-8")
     (OUT / "CNAME").write_text("1123junlin.com\n", encoding="utf-8")
     (OUT / ".nojekyll").write_text("", encoding="utf-8")
     (OUT / "favicon.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#3F7A9B"/><text x="32" y="43" text-anchor="middle" font-family="serif" font-size="30" fill="#fff">俊</text></svg>', encoding="utf-8")
