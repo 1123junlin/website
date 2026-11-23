@@ -463,7 +463,6 @@ def portfolio_page():
 
 # ---------- 訪談頁 ----------
 EPISODES = [
-    ("#027", "超人氣新媒體執行長、開開 KaiKai 創辦人－王奕傑", "ghA6fgagJ-w"),
     ("#026", "筑今數位設計創辦人－游思潔 Jacy", "lpTH51mgbzg"),
     ("#025", "氣象權威－李富城", "BMgLp5gbr70", ("閱讀專訪心得", "/2026/07/16/allplayer-studio-saleswhat/")),
     ("#024", "寵秘生技&食亨董事長－蕭毓君", "YeDpXmgTSPg"),
