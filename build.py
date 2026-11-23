@@ -463,17 +463,16 @@ def portfolio_page():
 
 # ---------- 訪談頁 ----------
 EPISODES = [
+    ("#027", "超人氣新媒體執行長、開開 KaiKai 創辦人－王奕傑", "ghA6fgagJ-w"),
+    ("#026", "筑今數位設計創辦人－游思潔 Jacy", "lpTH51mgbzg"),
+    ("#025", "氣象權威－李富城", "BMgLp5gbr70"),
+    ("#024", "寵秘生技&食亨董事長－蕭毓君", "YeDpXmgTSPg"),
+    ("#023", "華書慈善基金會執行長&跨領域教育實踐者－譚雅云", "BcCUw3lOWVs"),
     ("#022", "HOOTERS TAIWAN二代&老撈麻辣鍋共同創辦人－劉昶志", "uPSdFcxzD5o"),
     ("#021", "長穩社福慈善基金會執行長－Sigrid", "AqU385sOvrM"),
     ("#020", "嗜甜咖啡烘焙所負責人－林哲正", "k1x-zkzudY8"),
     ("#019", "調色師 feat. 視覺藝術家－PAUL HANRAHAN 安保羅", "r4GcCkddxCA"),
     ("#018", "知覺優格創辦人－蕭子翔", "UHC4IbZKYEM"),
-    # 以下 5 支標題待補
-    ("", "", "BcCUw3lOWVs"),
-    ("", "", "YeDpXmgTSPg"),
-    ("", "", "BMgLp5gbr70"),
-    ("", "", "lpTH51mgbzg"),
-    ("", "", "ghA6fgagJ-w"),
 ]
 
 def interview_page():
