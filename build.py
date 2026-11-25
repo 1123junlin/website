@@ -588,7 +588,7 @@ def post(p):
     if qa:
         ld.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]})
-    write(p["path"], layout(p["title"], p.get("description", DESC), body, p["path"], ld, img, "article"))
+    write(p["path"], layout(p["title"], p.get("description", DESC), body, p["path"], ld, p.get("share_image") or img, "article"))
 
 def blog():
     rows, year = [], None
