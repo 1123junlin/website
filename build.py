@@ -97,6 +97,7 @@ def yt_grid(m):
 def md(text):
     h = markdown.markdown(text, extensions=["tables", "sane_lists", TocExtension(slugify=slugify_unicode, toc_depth="2-3")])
     h = re.sub(r'<!--.*?-->', '', h, flags=re.S)
+    h = h.replace('<table>', '<div class="table-wrap"><table>').replace('</table>', '</table></div>')
     def fix(m):
         href = m.group(1)
         if href.endswith(".md"):
