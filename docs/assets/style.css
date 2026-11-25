@@ -418,3 +418,6 @@ a:hover{color:var(--sora)}
 .post-hero{max-width:var(--read);margin:0 0 36px}
 .post-hero img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
 .post-hero figcaption{margin-top:10px;font-size:14px;line-height:1.6;color:var(--sub);font-style:italic}
+.toc ol.plain{list-style:none;padding-left:0}
+.prose pre{background:var(--mist);border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-all;overflow-x:auto}
+.prose pre code{background:none;padding:0;font-size:inherit}
