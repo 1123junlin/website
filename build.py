@@ -275,6 +275,18 @@ def home():
         ("想讓網站被搜尋與 AI 讀懂", "網站架構、內容規劃與結構化資料，提升 SEO 與 AIEO。", "看常見問題", "/faq/"),
     ]
     body = f"""
+<section class="kv2" aria-label="JunLin｜AI 主視覺">
+<div class="kv2-art">
+  <div class="kv2-sun" aria-hidden="true"></div>
+  <svg class="kv2-line" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><path d="M1320 330 C 1470 300, 1590 330, 1670 420 S 1460 600, 1340 690 S 1520 840, 1680 800"/></svg>
+  <div class="kv2-text">
+    <p class="kv2-kicker">賴俊燐　幕後的 AI 應用師</p>
+    <p class="kv2-mark">JunLin<span class="kv2-bar">｜</span><span class="kv2-ai">AI</span><span class="kv2-seal" aria-hidden="true">俊燐</span></p>
+    <p class="kv2-line1">讓專業被看見，<br>把繁瑣交給 AI</p>
+  </div>
+  <ul class="kv2-cards"><li class="kc kc1"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="36" height="24" rx="2"/><path d="M24 33v6M17 39h14"/><path d="M13 17h14M13 22h20M13 27h9"/></svg></span><span class="kc-t">課程規劃</span><span class="kc-s">教案與講座</span></li><li class="kc kc2"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="13" height="10" rx="5"/><rect x="30" y="8" width="13" height="10" rx="1.5"/><path d="M24 26 31 33 24 40 17 33z"/><path d="M18 13h12M36.5 18v6l-6 5M11.5 18v6l6 5"/></svg></span><span class="kc-t">AI 工作流</span><span class="kc-s">把流程交給 AI</span></li><li class="kc kc3"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="38" height="30" rx="3"/><path d="M5 15h38"/><circle cx="10" cy="11.5" r=".8"/><circle cx="14" cy="11.5" r=".8"/><path d="M12 23h14M12 28h20M12 33h10"/></svg></span><span class="kc-t">網站與 AIEO</span><span class="kc-s">讓 AI 讀懂你</span></li><li class="kc kc4"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M21 19v10l8-5z"/><path d="M20 39h8"/></svg></span><span class="kc-t">短影音</span><span class="kc-s">企劃與剪輯</span></li></ul>
+</div>
+</section>
 <section class="hero"><div class="wrap">
   <div>
     <p class="hero-name">賴俊燐　JunLin</p>
