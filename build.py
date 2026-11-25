@@ -278,9 +278,9 @@ def home():
 <section class="kv2" aria-label="JunLin｜AI 主視覺">
 <div class="kv2-art">
   <div class="kv2-sun" aria-hidden="true"></div>
-  <svg class="kv2-line" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true"><path d="M1320 330 C 1470 300, 1590 330, 1670 420 S 1460 600, 1340 690 S 1520 840, 1680 800"/></svg>
+  <svg class="kv2-line" viewBox="0 0 1920 520" preserveAspectRatio="none" aria-hidden="true"><path d="M1290 150 C 1420 80, 1560 70, 1660 120 S 1560 260, 1400 330 S 1560 450, 1720 380"/></svg>
   <div class="kv2-text">
-    <p class="kv2-kicker">賴俊燐　幕後的 AI 應用師</p>
+    <p class="kv2-kicker">幕後的 AI 應用師</p>
     <p class="kv2-mark">JunLin<span class="kv2-bar">｜</span><span class="kv2-ai">AI</span><span class="kv2-seal" aria-hidden="true">俊燐</span></p>
     <p class="kv2-line1">讓專業被看見，<br>把繁瑣交給 AI</p>
   </div>
