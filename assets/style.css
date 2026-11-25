@@ -415,3 +415,6 @@ a:hover{color:var(--sora)}
 }
 .evt-note{margin:0 0 16px;padding:14px 18px;background:#fff6e8;border:1px solid #f0d9b0;border-radius:12px;font-size:17px;line-height:1.7;color:#6b4a12;font-weight:500}
 .evt-note a{color:#a5641a;font-weight:700}
+.post-hero{max-width:var(--read);margin:0 0 36px}
+.post-hero img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+.post-hero figcaption{margin-top:10px;font-size:14px;line-height:1.6;color:var(--sub);font-style:italic}

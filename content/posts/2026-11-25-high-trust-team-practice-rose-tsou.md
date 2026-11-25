@@ -6,6 +6,8 @@ category: 活動記錄
 url: https://1123junlin.com/2026/11/25/high-trust-team-practice-rose-tsou/
 featured_image: /images/2026/11/1125-high-trust-team-cover.jpg
 share_image: /images/2026/11/1125-high-trust-team-fb-share.jpg
+hero_image: /images/2026/11/1125-high-trust-team-fb-share.jpg
+hero_caption: 高信任團隊，是做出來的：我從課堂帶走的三個重點——卡關早點說、分歧攤開談、承諾交給系統
 description: 參加 Rose 鄒開蓮主講的「高信任團隊實戰」線上課程後，我從幕後特助的角度整理三個重點：卡關早點說、分歧攤開談、承諾交給系統，附上我實際在用的回報格式、討論前整理表與承諾追蹤流程。
 ---
 
