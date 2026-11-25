@@ -413,5 +413,5 @@ a:hover{color:var(--sora)}
   .evt-t{font-size:21px}
   .evt-btn{align-self:stretch;text-align:center}
 }
-.evt-note{margin:16px 0 0;padding:14px 18px;background:#fff6e8;border:1px solid #f0d9b0;border-radius:12px;font-size:17px;line-height:1.7;color:#6b4a12;font-weight:500}
+.evt-note{margin:0 0 16px;padding:14px 18px;background:#fff6e8;border:1px solid #f0d9b0;border-radius:12px;font-size:17px;line-height:1.7;color:#6b4a12;font-weight:500}
 .evt-note a{color:#a5641a;font-weight:700}

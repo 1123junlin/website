@@ -262,6 +262,7 @@ def event_section():
     e = EVENT
     return f"""<section class="evt" id="event" data-end="{e['hide_after']}" aria-label="近期講座"><div class="wrap">
   <p class="eyebrow">近期講座</p>
+  <p class="evt-note">課程日期異動到12/3(四) ，將贈送價值NT$3,000 AI 製作短影音的skill，報名請洽<a href="mailto:oth.1123junlin@gmail.com">信箱</a>。</p>
   <a class="evt-card" href="{e['url']}" target="_blank" rel="noopener">
     <span class="evt-img"><img src="{e['image']}" alt="Rex（賴俊燐）主講〈{esc(e['name'])}〉線上直播講座主視覺" width="1080" height="540" decoding="async"></span>
     <span class="evt-body">
@@ -272,7 +273,6 @@ def event_section():
       <span class="btn btn-main evt-btn">立即報名</span>
     </span>
   </a>
-  <p class="evt-note">課程日期異動到12/3(四) 將贈送價值3000的短影音製作skill，報名請洽<a href="mailto:{EMAIL}">信箱</a>。</p>
 </div></section>
 <script>(function(){{var s=document.getElementById('event');if(s&&Date.now()>Date.parse(s.dataset.end))s.remove();}})();</script>
 """
