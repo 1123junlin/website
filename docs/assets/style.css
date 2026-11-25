@@ -393,3 +393,23 @@ a:hover{color:var(--sora)}
   .kc-s{font-size:13px;white-space:normal}
 }
 @media (prefers-reduced-motion:reduce){.kc{animation:none}}
+/* 近期講座 */
+.evt{padding:56px 0 8px}
+.evt .eyebrow{margin:0 0 14px}
+.evt-card{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;text-decoration:none;color:var(--ink);box-shadow:0 16px 36px rgba(44,93,120,.08);transition:transform .2s,box-shadow .2s}
+.evt-card:hover{transform:translateY(-3px);box-shadow:0 22px 44px rgba(44,93,120,.14)}
+.evt-img img{display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:cover;border-radius:14px}
+.evt-body{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-right:12px}
+.evt-badge{font-size:14px;font-weight:700;color:#fff;background:#c0392b;border-radius:999px;padding:5px 14px}
+.evt-t{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1.45}
+.evt-meta{font-size:16px;color:var(--sora-deep);font-weight:500}
+.evt-list{display:flex;flex-direction:column;gap:6px;font-size:16px;color:var(--sub)}
+.evt-list span::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--wakatake);margin-right:10px;vertical-align:middle}
+.evt-btn{margin-top:6px;font-size:17px;padding:13px 34px}
+@media (max-width:760px){
+  .evt{padding:36px 0 0}
+  .evt-card{grid-template-columns:1fr;gap:16px;padding:14px;border-radius:18px}
+  .evt-body{padding:4px 6px 8px}
+  .evt-t{font-size:21px}
+  .evt-btn{align-self:stretch;text-align:center}
+}

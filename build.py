@@ -248,6 +248,34 @@ def post_card(p):
           else f'<div class="ph noimg">{esc(p.get("category",""))}</div>')
     return f'<a class="card" href="{p["path"]}">{ph}<span class="d">{zh_date(p["d"])}</span><h3>{esc(p["title"])}</h3></a>'
 
+# ---------- 近期講座（首頁） ----------
+EVENT = {
+    "name": "AI 工具這麼多，我該從哪個開始？從零入門到個人化 AI 助手",
+    "url": "https://www.accupass.com/event/2610270616091929409210",
+    "image": "https://static.accupass.com/eventbanner/2610270616391181758718.jpg",
+    "start": "2026-11-26T21:00:00+08:00", "end": "2026-11-26T22:00:00+08:00",
+    "when": "2026／11／26（四）21:00–22:00",
+    "org": "閱讀星世界",
+}
+
+def event_section():
+    e = EVENT
+    return f"""<section class="evt" id="event" data-end="{e['end']}" aria-label="近期講座"><div class="wrap">
+  <p class="eyebrow">近期講座</p>
+  <a class="evt-card" href="{e['url']}" target="_blank" rel="noopener">
+    <span class="evt-img"><img src="{e['image']}" alt="Rex（賴俊燐）主講〈{esc(e['name'])}〉線上直播講座主視覺" width="1080" height="540" decoding="async"></span>
+    <span class="evt-body">
+      <span class="evt-badge">YouTube 線上直播</span>
+      <span class="evt-t">{esc(e['name'])}</span>
+      <span class="evt-meta">{e['when']}｜主辦：{e['org']}</span>
+      <span class="evt-list"><span>新手先從哪個 AI 工具開始</span><span>AI 除了聊天還能做什麼</span><span>現場示範打造個人化 AI 助手</span></span>
+      <span class="btn btn-main evt-btn">立即報名</span>
+    </span>
+  </a>
+</div></section>
+<script>(function(){{var s=document.getElementById('event');if(s&&Date.now()>Date.parse(s.dataset.end))s.remove();}})();</script>
+"""
+
 def home():
     pillars = [
         ("分享", "Share", "透過演講、授課、訪談，分享創業觀點與 AI 應用。", "/images/2026/07/service-01.png"),
@@ -287,7 +315,7 @@ def home():
   <ul class="kv2-cards"><li class="kc kc1"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="36" height="24" rx="2"/><path d="M24 33v6M17 39h14"/><path d="M13 17h14M13 22h20M13 27h9"/></svg></span><span class="kc-t">課程規劃</span><span class="kc-s">教案與講座</span></li><li class="kc kc2"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="13" height="10" rx="5"/><rect x="30" y="8" width="13" height="10" rx="1.5"/><path d="M24 26 31 33 24 40 17 33z"/><path d="M18 13h12M36.5 18v6l-6 5M11.5 18v6l6 5"/></svg></span><span class="kc-t">AI 工作流</span><span class="kc-s">把流程交給 AI</span></li><li class="kc kc3"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="8" width="38" height="30" rx="3"/><path d="M5 15h38"/><circle cx="10" cy="11.5" r=".8"/><circle cx="14" cy="11.5" r=".8"/><path d="M12 23h14M12 28h20M12 33h10"/></svg></span><span class="kc-t">網站與 AIEO</span><span class="kc-s">讓 AI 讀懂你</span></li><li class="kc kc4"><span class="kc-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="4" width="24" height="40" rx="4"/><path d="M21 19v10l8-5z"/><path d="M20 39h8"/></svg></span><span class="kc-t">短影音</span><span class="kc-s">企劃與剪輯</span></li></ul>
 </div>
 </section>
-<section class="hero"><div class="wrap">
+{event_section()}<section class="hero"><div class="wrap">
   <div>
     <p class="hero-name">賴俊燐　JunLin</p>
     <h1>把 AI 落地，<br>變成真正能用的工具</h1>
@@ -342,7 +370,13 @@ def home():
 </div></section>
 """
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": NAME, "url": SITE + "/",
-           "description": DESC, "inLanguage": "zh-TW", "author": {"@id": SITE + "/#person"}}, PERSON_LD]
+           "description": DESC, "inLanguage": "zh-TW", "author": {"@id": SITE + "/#person"}}, PERSON_LD,
+          {"@context": "https://schema.org", "@type": "Event", "name": EVENT["name"], "url": EVENT["url"],
+           "image": EVENT["image"], "startDate": EVENT["start"], "endDate": EVENT["end"],
+           "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode", "eventStatus": "https://schema.org/EventScheduled",
+           "location": {"@type": "VirtualLocation", "url": EVENT["url"]},
+           "organizer": {"@type": "Organization", "name": EVENT["org"]},
+           "performer": {"@id": SITE + "/#person"}, "inLanguage": "zh-TW"}]
     write("/", layout(NAME, DESC, body, "/", ld))
 
 # ---------- 一般頁面 ----------
