@@ -367,6 +367,25 @@ def services_page():
 <header class="page-head"><h1>服務項目</h1>
 <p class="page-lead">從分享觀念、動手建構、優化網站到協助轉型，四種合作方式可以單獨進行，也可以一路陪到落地。</p></header>
 <div class="svc-list">{"".join(rows)}</div>
+<section class="svc-logic" aria-labelledby="logic-h">
+  <h2 id="logic-h">我的設計邏輯</h2>
+  <p>不論是哪一種合作，都從你的問題出發，照這條流程把 AI 接進真實工作。</p>
+  <div class="flow-box">
+  <ol class="flow">
+    <li class="fl fl-term"><span>你的問題</span><small>先說清楚要解決什麼</small></li>
+    <li class="fl-arrow" aria-hidden="true"></li>
+    <li class="fl fl-proc"><span>拆成流程圖</span><small>步驟、工具、限制</small></li>
+    <li class="fl-arrow" aria-hidden="true"></li>
+    <li class="fl fl-db"><span>資料庫</span><small>課程・文章・知識庫</small></li>
+    <li class="fl-arrow" aria-hidden="true"></li>
+    <li class="fl fl-proc"><span>AI 與自動化</span><small>一路做到終點</small></li>
+    <li class="fl-arrow" aria-hidden="true"></li>
+    <li class="fl fl-dec"><span>人的審核</span><small>當責的是人</small></li>
+    <li class="fl-arrow" aria-hidden="true"></li>
+    <li class="fl fl-term fl-end"><span>能用的工具</span><small>真正落地</small></li>
+  </ol>
+  </div>
+</section>
 <section class="svc-cta">
   <h2>想從哪一項開始？</h2>
   <p>來信簡單說明現況與想解決的問題，我會依實際情況評估可行的合作方式。</p>

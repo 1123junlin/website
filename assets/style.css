@@ -315,3 +315,38 @@ a:hover{color:var(--sora)}
   .eps{grid-template-columns:1fr;gap:28px}
 }
 .ep-rel{display:block;margin-top:4px;font-size:14px}
+/* 首頁頂部：工作流 Banner */
+.svc-logic{padding:56px 0 8px}
+.svc-logic h2{font-family:var(--serif);font-size:clamp(24px,3vw,32px);margin:0 0 10px;letter-spacing:.06em}
+.svc-logic>p{color:var(--sub);margin:0 0 24px;max-width:36em}
+.flow-box{background:linear-gradient(180deg,var(--mist),var(--paper));border:1px solid var(--line);border-radius:16px;padding:32px 28px}
+.flow{list-style:none;margin:0;padding:0;display:flex;align-items:center}
+.fl{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--surface);border:1.5px solid var(--sora);padding:10px 18px;min-height:64px}
+.fl span{font-size:16px;font-weight:500;color:var(--ink);white-space:nowrap}
+.fl small{font-size:12.5px;color:var(--sub);white-space:nowrap;margin-top:2px}
+.fl-term{border-radius:999px;padding:10px 24px}
+.fl-proc{border-radius:6px}
+.fl-db{border-radius:50% / 16px}
+.fl-end{background:var(--sora);border-color:var(--sora)}
+.fl-end span,.fl-end small{color:#fff}
+.fl-dec{position:relative;background:none;border:0;width:150px;height:92px;padding:0}
+.fl-dec::before,.fl-dec::after{content:"";position:absolute;inset:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.fl-dec::before{background:var(--wakatake)}
+.fl-dec::after{inset:2px;background:var(--surface)}
+.fl-dec span,.fl-dec small{position:relative;z-index:1}
+.fl-dec small{color:var(--wakatake)}
+.fl-arrow{flex:1 1 auto;min-width:22px;height:1.5px;background:var(--sora);position:relative;margin:0 6px;transform-origin:left center;animation:flowdraw .5s ease-out both}
+.fl-arrow::after{content:"";position:absolute;right:-1px;top:-4px;border-left:7px solid var(--sora);border-top:4.75px solid transparent;border-bottom:4.75px solid transparent}
+.flow li:nth-child(2){animation-delay:.2s}.flow li:nth-child(4){animation-delay:.45s}.flow li:nth-child(6){animation-delay:.7s}.flow li:nth-child(8){animation-delay:.95s}.flow li:nth-child(10){animation-delay:1.2s}
+@keyframes flowdraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (max-width:1080px){.fl{padding:8px 12px}.fl-term{padding:8px 16px}.fl span{font-size:15px}.fl-dec{width:132px;height:84px}}
+@media (max-width:900px){
+  .flow{overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:24px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .flow::-webkit-scrollbar{display:none}
+  .fl{scroll-snap-align:start}
+  .fl small{font-size:13px}
+  .fl-arrow{flex:0 0 26px}
+  .flow-box{padding:24px 0 20px;overflow:hidden}
+  .flow{margin:0;padding:4px 24px 10px}
+  .svc-logic>p::after{content:"（左右滑動看完整流程）";font-size:13px}
+}
