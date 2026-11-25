@@ -592,7 +592,7 @@ def post(p):
     upd = f'<span class="upd">更新於 <time datetime="{updated}">{zh_date(updated)}</time></span>' if updated else ""
     hero = (f'<figure class="post-hero"><img src="{p["hero_image"]}" alt="{esc(p.get("hero_caption",""))}" width="1200" height="630" decoding="async"><figcaption>{esc(p.get("hero_caption",""))}</figcaption></figure>' if p.get("hero_image") else "")
     summary = f'<section class="tldr" aria-label="重點摘要"><p class="tldr-h">重點摘要</p><p>{esc(p.get("description",""))}</p></section>' if p.get("description") else ""
-    tocbox = f'<nav class="toc" aria-label="本文目錄"><details open><summary>本文目錄</summary><ol{' class="plain"' if any(re.match(r'\d+\. ', h) for _, h in heads) else ''}>{toc}</ol></details></nav>' if len(heads) >= 3 else ""
+    tocbox = f'<nav class="toc" aria-label="本文目錄"><details open><summary>本文目錄</summary><ol{' class="toc-num"' if any(re.match(r'\d+\. ', h) for _, h in heads) else ''}>{toc}</ol></details></nav>' if len(heads) >= 3 else ""
     body = f"""<div class="wrap"><header class="page-head">
 <p class="crumb"><a href="/">首頁</a> › <a href="/blog/">文章</a> › {esc(p.get("category",""))}</p>
 <h1>{esc(p["title"])}</h1>
