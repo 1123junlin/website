@@ -35,6 +35,8 @@ REDIRECTS = {
     "/2026/11/19/ai-daily-operations-dr-hao-november-2026/": "/2026/11/18/ai-daily-operations-dr-hao-november-2026/",
     "/activities/": "/",
 }
+GA_TAG = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-S07YZ40RES"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-S07YZ40RES');</script>"""
 FONTS = "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap"
 CSS = re.sub(r"/\*.*?\*/|\s*\n\s*", "", (ROOT / "assets" / "style.css").read_text(encoding="utf-8"), flags=re.S)
 
@@ -148,6 +150,7 @@ def layout(title, desc, body, path, ld=None, image=None, og_type="website"):
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="utf-8">
+{GA_TAG}
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(full)}</title>
 <meta name="description" content="{esc(desc)}">
